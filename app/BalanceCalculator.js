@@ -3,6 +3,7 @@ function BalanceCalculator(account) {
 
     this.title = account.title;
     this.accountType = account.accountType;
+    this.complete = false;
 
     this.balance = account.balance;
     this.apr = account.apr;
@@ -41,14 +42,17 @@ BalanceCalculator.prototype.calculateBalancesUntil = function(endDate) {
                     lastAverageBalanceDate = event.date;
                 }
 
-                if (this.testZeroCrossing(this.balance, event.amount)) {
+                if (this.complete) {
                     this.recordBalance(balances, event.date, 0);
-                    return balances;
                 }
-
-                this.balance += event.amount;
-                this.recordBalance(balances, event.date, this.balance);
-
+                else if (this.testZeroCrossing(this.balance, event.amount)) {
+                    this.recordBalance(balances, event.date, 0);
+                    this.complete = true;
+                }
+                else {
+                    this.balance += event.amount;
+                    this.recordBalance(balances, event.date, this.balance);
+                }
                 break;
 
             case "compound":

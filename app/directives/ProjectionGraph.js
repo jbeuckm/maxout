@@ -11,7 +11,7 @@ angular.module('maxout').directive('projectionGraph', [function () {
         link: function (scope, element, attributes) {
 
             var margin, width, height, parseDate, formatPercent,
-                x, y, color, xAxis, yAxis, area, stack, svg;
+                x, y, color, xAxis, yAxis, area, invertedArea, stack, svg;
 
             scope.$watch('accounts', function(){
                 console.log('accounts changed');
@@ -53,6 +53,12 @@ angular.module('maxout').directive('projectionGraph', [function () {
                     .x(function(d) { return x(d.date); })
                     .y0(function(d) { return y(d.y0); })
                     .y1(function(d) { return y(d.y0 + d.y); });
+
+                invertedArea = d3.svg.area()
+                    .x(function(d) { return x(d.date); })
+                    .y0(function(d) { return y(-d.y0); })
+                    .y1(function(d) { return y(-d.y0 - d.y); });
+
 
                 stack = d3.layout.stack()
                     .values(function(d) { return d.values; });
@@ -128,18 +134,9 @@ angular.module('maxout').directive('projectionGraph', [function () {
                     .enter().append("g")
                     .attr("class", class_name);
 
-                function getValues(d) {
-                    if (invert) {
-                        return d.values.map(function(d){d.y *= -1; return d;});
-                    }
-                    else {
-                        return d.values;
-                    }
-                }
-
                 account.append("path")
                     .attr("class", "area")
-                    .attr("d", function(d) { return area(getValues(d)); })
+                    .attr("d", function(d) { return (invert)? invertedArea(d.values) : area(d.values); })
                     .style("fill", function(d) { return color(d.name); });
 
                 account.append("text")
@@ -171,9 +168,7 @@ angular.module('maxout').directive('projectionGraph', [function () {
                     datum.dateRange = d3.extent(datum.values, function(d) {
                         return d.date;
                     });
-                    datum.balanceRange = d3.extent(datum.values, function(d) {
-                        return d.balance;
-                    });
+
                     data.push(datum);
                 }
 
