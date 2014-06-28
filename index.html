@@ -1,6 +1,8 @@
 <html ng-app="maxout">
 
 <head>
+  <link rel="stylesheet" href="css/styles.css">
+
   <script src="bower_components/d3/d3.min.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-percentage-filter/percentage.js"></script>
@@ -16,18 +18,35 @@
     <tr>
       <th>Title</th>
       <th>Balance</th>
-      <th>Rate</th>
+      <th>APR</th>
     </tr>
 
     <tr ng-repeat="account in accounts">
       <td>{{account.title}}</td>
       <td>{{account.balance}}</td>
-      <td>{{account.rate | percentage}}</td>
+      <td>{{account.apr | percentage}}</td>
     </tr>
 
   </table>
 
-  <button ng-click="addAccount()">add account</button>
+  <form ng-submit="addAccount()">
+    <label for="title">Title</label>
+    <input id="title" ng-model="titleText" placeholder="title"/>
+    <label for="balance">Balance</label>
+    <input id="balance" ng-model="balanceText" placeholder="current balance"/>
+    <label for="apr">APR</label>
+    <input id="apr" ng-model="aprText" placeholder="interest rate"/>
+
+    <label for="compoundPeriod">Compounds</label>
+    <select id="compoundPeriod" ng-model="compoundPeriod">
+      <option value="1">daily</option>
+      <option value="7">weekly</option>
+      <option value="30">monthly</option>
+    </select>
+
+    <input type="submit" value="Add Account"/>
+  </form>
+
 </div>
 
 </body>
