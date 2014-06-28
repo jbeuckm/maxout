@@ -1,6 +1,6 @@
 
 function BalanceCalculator(account, depositAmount, depositPeriod) {
-    this.principal = parseFloat(account.balance);
+    this.balance = parseFloat(account.balance);
     this.apr = parseFloat(account.apr);
     this.compoundPeriod = parseFloat(account.compoundPeriod);
 
@@ -15,11 +15,20 @@ BalanceCalculator.prototype.getDataUntil = function(endDate) {
     var now = moment();
     while (now.isBefore(endDate)) {
 
-        this.principal += this.depositAmount;
+        if ( (this.balance <= 0) && ((this.balance+this.depositAmount) >= 0) ) {
+            console.log("paid");
+            balances.push({
+                date: ""+now.format('YY-MMM-D'),
+                balance: 0
+            });
+            return balances;
+        }
+
+        this.balance += this.depositAmount;
 
         balances.push({
             date: ""+now.format('YY-MMM-D'),
-            balance: this.principal
+            balance: this.balance
         });
 
         now.add('days', this.depositPeriod);

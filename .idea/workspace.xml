@@ -34,25 +34,25 @@
       <file leaf-file-name="ProjectionGraph.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/directives/ProjectionGraph.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="0" selection-start="680" selection-end="680" vertical-scroll-proportion="-12.307693">
+            <state line="122" column="81" selection-start="4406" selection-end="4406" vertical-scroll-proportion="-16.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BalanceCalculator.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="BalanceCalculator.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/BalanceCalculator.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="0" selection-start="417" selection-end="417" vertical-scroll-proportion="0.0">
+            <state line="17" column="0" selection-start="476" selection-end="476" vertical-scroll-proportion="0.29988974">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="styles.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="styles.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="11" selection-start="21" selection-end="21" vertical-scroll-proportion="0.035281148">
+            <state line="2" column="11" selection-start="21" selection-end="21" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -81,9 +81,9 @@
         <option value="$PROJECT_DIR$/app/services/PortfolioService.js" />
         <option value="$PROJECT_DIR$/app/app.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/css/styles.css" />
         <option value="$PROJECT_DIR$/app/directives/ProjectionGraph.js" />
         <option value="$PROJECT_DIR$/app/BalanceCalculator.js" />
-        <option value="$PROJECT_DIR$/css/styles.css" />
       </list>
     </option>
   </component>
@@ -517,6 +517,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/css/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="11" selection-start="21" selection-end="21" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="38" selection-start="744" selection-end="744" vertical-scroll-proportion="-2.64">
@@ -524,23 +531,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/BalanceCalculator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="417" selection-end="417" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/directives/ProjectionGraph.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="680" selection-end="680" vertical-scroll-proportion="-12.307693">
+        <state line="122" column="81" selection-start="4406" selection-end="4406" vertical-scroll-proportion="-16.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/styles.css">
+    <entry file="file://$PROJECT_DIR$/app/BalanceCalculator.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="11" selection-start="21" selection-end="21" vertical-scroll-proportion="0.035281148">
+        <state line="17" column="0" selection-start="476" selection-end="476" vertical-scroll-proportion="0.29988974">
           <folding />
         </state>
       </provider>

@@ -120,10 +120,10 @@ angular.module('maxout').directive('projectionGraph', [function () {
                 var calculators = {};
                 for (var i= 0, l=accounts.length; i<l; i++) {
                     var account = accounts[i];
-                    calculators[account.title] = new BalanceCalculator(account, 10, 30);
+                    calculators[account.title] = new BalanceCalculator(account, 500, 30);
                 }
 
-                return calculators[accounts[0].title].getDataUntil(moment().add('years', 3));
+                return calculators[accounts[0].title].getDataUntil(moment().add('years', 5));
 
                 return [
                     {"date":"11-Oct-13","IE":"41.62","Chrome":"22.36","Firefox":"25.58","Safari":"9.13","Opera":"1.22"},
