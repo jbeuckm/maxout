@@ -14,10 +14,7 @@ angular.module('maxout').directive('projectionGraph', [function () {
 
             scope.$watch('accounts', function(){
                 if (scope.accounts) {
-                    console.log(scope.accounts);
                     scope.balances = getData(scope.accounts);
-
-                    console.log(scope.balances);
                     drawData(scope.balances);
                 }
             });
@@ -27,7 +24,7 @@ angular.module('maxout').directive('projectionGraph', [function () {
 
             function setup() {
                 margin = {
-                        top: 20, right: 20, bottom: 30, left: 50};
+                        top: 20, right: 100, bottom: 30, left: 100};
                     width = 960 - margin.left - margin.right;
                     height = 500 - margin.top - margin.bottom;
 

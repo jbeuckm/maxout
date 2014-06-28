@@ -34,7 +34,7 @@
       <file leaf-file-name="ProjectionGraph.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/directives/ProjectionGraph.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="122" column="81" selection-start="4406" selection-end="4406" vertical-scroll-proportion="-16.0">
+            <state line="17" column="0" selection-start="581" selection-end="581" vertical-scroll-proportion="-7.3846154">
               <folding />
             </state>
           </provider>
@@ -43,7 +43,7 @@
       <file leaf-file-name="BalanceCalculator.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/BalanceCalculator.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="476" selection-end="476" vertical-scroll-proportion="0.29988974">
+            <state line="20" column="22" selection-start="669" selection-end="669" vertical-scroll-proportion="0.35281146">
               <folding />
             </state>
           </provider>
@@ -533,14 +533,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/directives/ProjectionGraph.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="122" column="81" selection-start="4406" selection-end="4406" vertical-scroll-proportion="-16.0">
+        <state line="17" column="0" selection-start="581" selection-end="581" vertical-scroll-proportion="-7.3846154">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/BalanceCalculator.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="476" selection-end="476" vertical-scroll-proportion="0.29988974">
+        <state line="20" column="22" selection-start="669" selection-end="669" vertical-scroll-proportion="0.35281146">
           <folding />
         </state>
       </provider>

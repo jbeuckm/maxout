@@ -16,9 +16,9 @@ BalanceCalculator.prototype.getDataUntil = function(endDate) {
     while (now.isBefore(endDate)) {
 
         if ( (this.balance <= 0) && ((this.balance+this.depositAmount) >= 0) ) {
-            console.log("paid");
+            console.log("debt paid "+now.format('YY-MMM-D'));
             balances.push({
-                date: ""+now.format('YY-MMM-D'),
+                date: now.format('YY-MMM-D'),
                 balance: 0
             });
             return balances;
