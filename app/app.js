@@ -3,22 +3,9 @@ angular.module('maxout', ['percentage']).config(function(){
 
 });
 
-angular.module('maxout').controller('MainController', ['$scope', function($scope){
+angular.module('maxout').controller('MainController', ['$scope', 'PortfolioService', function($scope, PortfolioService){
 
-    $scope.accounts = [
-        {
-            title: "savings",
-            balance: 100,
-            apr:.07,
-            compoundPeriod: 1
-        },
-        {
-            title: "loan",
-            balance: -100,
-            apr:.0375,
-            compoundPeriod: 30
-        }
-    ];
+    $scope.accounts = PortfolioService.loadPortfolio() || [];
 
     $scope.addAccount = function(){
         $scope.accounts.push({
@@ -27,6 +14,8 @@ angular.module('maxout').controller('MainController', ['$scope', function($scope
             apr: $scope.aprText,
             compoundPeriod: $scope.compoundPeriod
         });
+
+        PortfolioService.savePortfolio($scope.accounts);
     };
 
 }]);
