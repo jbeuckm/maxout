@@ -1,0 +1,19 @@
+{
+  "name": "angular-percentage-directive",
+  "version": "1.0.1",
+  "main": "percentage.js",
+  "dependencies": {
+    "angular": ">=1.2.*"
+  },
+  "homepage": "https://github.com/vpegado/angular-percentage-filter",
+  "_release": "1.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.1",
+    "commit": "bc88247ccaa03f7007612bb32bcc76852cb1e3c1"
+  },
+  "_source": "git://github.com/vpegado/angular-percentage-filter.git",
+  "_target": "~1.0.1",
+  "_originalSource": "angular-percentage-filter",
+  "_direct": true
+}

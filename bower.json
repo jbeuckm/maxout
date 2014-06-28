@@ -1,0 +1,22 @@
+{
+  "name": "Maxout",
+  "version": "0.0.1",
+  "authors": [
+    "joe beuckman <joebeuckman@gmail.com>"
+  ],
+  "description": "View the effect of debt vs savings payment schemes",
+  "main": "index.html",
+  "license": "Don't read software licenses. Don't write software licenses.",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.18",
+    "d3": "~3.4.8",
+    "angular-percentage-filter": "~1.0.1"
+  }
+}
