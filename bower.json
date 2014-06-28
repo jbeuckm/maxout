@@ -17,6 +17,7 @@
   "dependencies": {
     "angular": "~1.2.18",
     "d3": "~3.4.8",
-    "angular-percentage-filter": "~1.0.1"
+    "angular-percentage-filter": "~1.0.1",
+    "angular-moment": "~0.7.1"
   }
 }

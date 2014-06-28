@@ -25,25 +25,25 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="63" selection-start="716" selection-end="716" vertical-scroll-proportion="-18.56">
+            <state line="24" column="38" selection-start="744" selection-end="744" vertical-scroll-proportion="-2.64">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PortfolioService.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/services/PortfolioService.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="40" selection-start="238" selection-end="238" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProjectionGraph.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ProjectionGraph.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/directives/ProjectionGraph.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="53" selection-start="613" selection-end="613" vertical-scroll-proportion="0.3351709">
+            <state line="125" column="0" selection-start="4407" selection-end="4407" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BalanceCalculator.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/BalanceCalculator.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="50" selection-start="272" selection-end="272" vertical-scroll-proportion="0.10584344">
               <folding />
             </state>
           </provider>
@@ -61,7 +61,7 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="54" selection-start="699" selection-end="699" vertical-scroll-proportion="0.0">
+            <state line="1" column="55" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -83,6 +83,7 @@
         <option value="$PROJECT_DIR$/app/app.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/app/directives/ProjectionGraph.js" />
+        <option value="$PROJECT_DIR$/app/BalanceCalculator.js" />
       </list>
     </option>
   </component>
@@ -156,6 +157,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="maxout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="maxout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bower_components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -504,21 +519,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="54" selection-start="699" selection-end="699" vertical-scroll-proportion="0.0">
+        <state line="1" column="55" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="63" selection-start="716" selection-end="716" vertical-scroll-proportion="-18.56">
+        <state line="24" column="38" selection-start="744" selection-end="744" vertical-scroll-proportion="-2.64">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/directives/ProjectionGraph.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="53" selection-start="613" selection-end="613" vertical-scroll-proportion="0.3351709">
+        <state line="125" column="0" selection-start="4407" selection-end="4407" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/BalanceCalculator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="50" selection-start="272" selection-end="272" vertical-scroll-proportion="0.10584344">
           <folding />
         </state>
       </provider>

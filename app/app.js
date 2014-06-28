@@ -1,5 +1,5 @@
 
-angular.module('maxout', ['percentage']).config(function(){
+angular.module('maxout', ['percentage', 'angularMoment']).config(function(){
 
 });
 

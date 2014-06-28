@@ -4,56 +4,72 @@ angular.module('maxout').directive('projectionGraph', [function () {
         restrict: 'E',
 //        require: "^ngModel",
         scope: {
-//            value: "=ngModel"
+            accounts: "=ngModel"
         },
         replace: 'true',
         template: '<svg id="graph"></svg>',
         link: function (scope, element, attributes) {
 
-            setupData(scope);
+            var margin, width, height, parseDate, formatPercent, x, y, color, xAxis, yAxis, area, stack, svg
 
-            var margin = {
-                    top: 20, right: 20, bottom: 30, left: 50},
-                width = 960 - margin.left - margin.right,
-                height = 500 - margin.top - margin.bottom;
+            scope.$watch('accounts', function(){
+                if (scope.accounts) {
+                    console.log(scope.accounts);
+                    scope.balances = getData(scope.accounts);
 
-            var parseDate = d3.time.format('%y-%b-%d').parse,
-                formatPercent = d3.format(".0%");
+                    console.log(scope.balances);
+                    drawData(scope.balances);
+                }
+            });
 
-            var x = d3.time.scale()
-                .range([0, width]);
+            setup();
 
-            var y = d3.scale.linear()
-                .range([height, 0]);
 
-            var color = d3.scale.category20();
+            function setup() {
+                margin = {
+                        top: 20, right: 20, bottom: 30, left: 50};
+                    width = 960 - margin.left - margin.right;
+                    height = 500 - margin.top - margin.bottom;
 
-            var xAxis = d3.svg.axis()
-                .scale(x)
-                .orient("bottom");
+                parseDate = d3.time.format('%y-%b-%d').parse,
+                    formatPercent = d3.format(".0%");
 
-            var yAxis = d3.svg.axis()
-                .scale(y)
-                .orient("left")
-                .tickFormat(formatPercent);
+                x = d3.time.scale()
+                    .range([0, width]);
 
-            var area = d3.svg.area()
-                .x(function(d) { return x(d.date); })
-                .y0(function(d) { return y(d.y0); })
-                .y1(function(d) { return y(d.y0 + d.y); });
+                y = d3.scale.linear()
+                    .range([height, 0]);
 
-            var stack = d3.layout.stack()
-                .values(function(d) { return d.values; });
+                color = d3.scale.category20();
 
-            var svg = d3.select('#'+element[0].id)//.append("svg")
-                .attr("width", width + margin.left + margin.right)
-                .attr("height", height + margin.top + margin.bottom)
-                .append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+                xAxis = d3.svg.axis()
+                    .scale(x)
+                    .orient("bottom");
 
-//            d3.json(this.datajson, function(error, data) {
+                yAxis = d3.svg.axis()
+                    .scale(y)
+                    .orient("left")
+                    .tickFormat(formatPercent);
 
-                var data = scope.balances;
+                area = d3.svg.area()
+                    .x(function(d) { return x(d.date); })
+                    .y0(function(d) { return y(d.y0); })
+                    .y1(function(d) { return y(d.y0 + d.y); });
+
+                stack = d3.layout.stack()
+                    .values(function(d) { return d.values; });
+
+                svg = d3.select('#'+element[0].id)
+                    .attr("width", width + margin.left + margin.right)
+                    .attr("height", height + margin.top + margin.bottom)
+                    .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            }
+
+
+            function drawData(data) {
+
+                if (!data) return;
 
                 color.domain(d3.keys(data[0]).filter(function(key) { return key !== "date"; }));
                 data.forEach(function(d) {
@@ -96,10 +112,20 @@ angular.module('maxout').directive('projectionGraph', [function () {
                 svg.append("g")
                     .attr("class", "y axis")
                     .call(yAxis);
-//            }.bind(this));
 
-            function setupData($scope) {
-                $scope.balances = [
+            }
+
+            function getData(accounts) {
+
+                var calculators = {};
+                for (var i= 0, l=accounts.length; i<l; i++) {
+                    var account = accounts[i];
+                    calculators[account.title] = new BalanceCalculator(account, 10, 30);
+                }
+
+                return calculators[accounts[0].title].getDataUntil(moment().add('years', 3));
+
+                return [
                     {"date":"11-Oct-13","IE":"41.62","Chrome":"22.36","Firefox":"25.58","Safari":"9.13","Opera":"1.22"},
                     {"date":"11-Oct-14","IE":"41.95","Chrome":"22.15","Firefox":"25.78","Safari":"8.79","Opera":"1.25"},
                     {"date":"11-Oct-15","IE":"37.64","Chrome":"24.77","Firefox":"25.96","Safari":"10.16","Opera":"1.39"},
@@ -126,3 +152,5 @@ angular.module('maxout').directive('projectionGraph', [function () {
     };
 
 }]);
+
+
