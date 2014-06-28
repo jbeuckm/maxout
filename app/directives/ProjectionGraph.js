@@ -31,7 +31,7 @@ angular.module('maxout').directive('projectionGraph', [function () {
                     width = 960 - margin.left - margin.right;
                     height = 500 - margin.top - margin.bottom;
 
-                parseDate = d3.time.format('%y-%b-%d').parse,
+                parseDate = d3.time.format('%y-%b-%d').parse;
                     formatPercent = d3.format(".0%");
 
                 x = d3.time.scale()
@@ -48,8 +48,7 @@ angular.module('maxout').directive('projectionGraph', [function () {
 
                 yAxis = d3.svg.axis()
                     .scale(y)
-                    .orient("left")
-                    .tickFormat(formatPercent);
+                    .orient("left");
 
                 area = d3.svg.area()
                     .x(function(d) { return x(d.date); })
@@ -80,12 +79,13 @@ angular.module('maxout').directive('projectionGraph', [function () {
                     return {
                         name: name,
                         values: data.map(function(d) {
-                            return {date: d.date, y: d[name] / 100};
+                            return {date: d.date, y: d[name] };
                         })
                     };
                 }));
 
                 x.domain(d3.extent(data, function(d) { return d.date; }));
+                y.domain(d3.extent(data, function(d) { return d.balance; }));
 
                 var browser = svg.selectAll(".browser")
                     .data(browsers)

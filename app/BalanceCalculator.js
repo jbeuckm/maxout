@@ -11,14 +11,14 @@ function BalanceCalculator(account, depositAmount, depositPeriod) {
 BalanceCalculator.prototype.getDataUntil = function(endDate) {
 
     var balances = [];
-console.log(endDate.format('YY-MMM-D'));
+
     var now = moment();
     while (now.isBefore(endDate)) {
 
         this.principal += this.depositAmount;
 
         balances.push({
-            date: now.format('YY-MMM-D'),
+            date: ""+now.format('YY-MMM-D'),
             balance: this.principal
         });
 
