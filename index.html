@@ -10,14 +10,15 @@
   <script src="bower_components/angular-percentage-filter/percentage.js"></script>
   <script src="app/app.js"></script>
   <script src="app/services/PortfolioService.js"></script>
-  <script src="app/controllers/GraphController.js"></script>
+  <script src="app/directives/ProjectionGraph.js"></script>
 </head>
 
 <body>
 
 <div ng-controller="MainController">
 
-  <svg id="graph" ng-controller="GraphController"/>
+  <projection-graph>
+  </projection-graph>
 
   <table>
 
