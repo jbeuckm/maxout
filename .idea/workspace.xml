@@ -22,10 +22,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="63" selection-start="716" selection-end="716" vertical-scroll-proportion="0.5260771">
+            <state line="29" column="63" selection-start="716" selection-end="716" vertical-scroll-proportion="-18.56">
               <folding />
             </state>
           </provider>
@@ -40,10 +40,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProjectionGraph.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ProjectionGraph.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/directives/ProjectionGraph.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="197" selection-end="197" vertical-scroll-proportion="0.0">
+            <state line="19" column="53" selection-start="613" selection-end="613" vertical-scroll-proportion="0.3351709">
               <folding />
             </state>
           </provider>
@@ -80,9 +80,9 @@
         <option value="$PROJECT_DIR$/app/controllers/GraphController.js" />
         <option value="$PROJECT_DIR$/css/styles.css" />
         <option value="$PROJECT_DIR$/app/services/PortfolioService.js" />
-        <option value="$PROJECT_DIR$/app/directives/ProjectionGraph.js" />
         <option value="$PROJECT_DIR$/app/app.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/app/directives/ProjectionGraph.js" />
       </list>
     </option>
   </component>
@@ -502,13 +502,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/directives/ProjectionGraph.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="197" selection-end="197" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="54" selection-start="699" selection-end="699" vertical-scroll-proportion="0.0">
@@ -518,7 +511,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="63" selection-start="716" selection-end="716" vertical-scroll-proportion="0.5260771">
+        <state line="29" column="63" selection-start="716" selection-end="716" vertical-scroll-proportion="-18.56">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/directives/ProjectionGraph.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="53" selection-start="613" selection-end="613" vertical-scroll-proportion="0.3351709">
           <folding />
         </state>
       </provider>
