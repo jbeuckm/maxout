@@ -18,4 +18,9 @@ angular.module('maxout').controller('MainController', ['$scope', 'PortfolioServi
         PortfolioService.savePortfolio($scope.accounts);
     };
 
+    $scope.removeAccount = function(index) {
+        $scope.accounts.splice(index, 1);
+        PortfolioService.savePortfolio($scope.accounts);
+    };
+
 }]);

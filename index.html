@@ -17,8 +17,7 @@
 
 <div ng-controller="MainController">
 
-  <projection-graph>
-  </projection-graph>
+  <projection-graph> </projection-graph>
 
   <table>
 
@@ -28,10 +27,11 @@
       <th>APR</th>
     </tr>
 
-    <tr ng-repeat="account in accounts">
+    <tr ng-repeat="(index, account) in accounts track by $index">
       <td>{{account.title}}</td>
       <td>{{account.balance}}</td>
       <td>{{account.apr | percentage}}</td>
+      <td class="delete-cell"><a ng-click="removeAccount(index)">X</a></td>
     </tr>
 
   </table>
