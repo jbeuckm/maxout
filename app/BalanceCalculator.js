@@ -8,31 +8,82 @@ function BalanceCalculator(account, depositAmount, depositPeriod) {
     this.depositPeriod = parseFloat(depositPeriod);
 }
 
+/**
+ * Calculate balance changes for now until the given end date.
+ * @param endDate
+ */
 BalanceCalculator.prototype.getDataUntil = function(endDate) {
 
-    var balances = [];
+    var events = this.generateEvents(endDate);
 
-    var now = moment();
-    while (now.isBefore(endDate)) {
+    console.log(events);
 
-        if ( (this.balance <= 0) && ((this.balance+this.depositAmount) >= 0) ) {
-            console.log("debt paid "+now.format('YY-MMM-D'));
-            balances.push({
-                date: now.format('YY-MMM-D'),
-                balance: 0
-            });
-            return balances;
-        }
+};
 
-        this.balance += this.depositAmount;
 
-        balances.push({
-            date: ""+now.format('YY-MMM-D'),
-            balance: this.balance
+/**
+ * Build the list of deposits and compound events
+ * @param endDate
+ */
+BalanceCalculator.prototype.generateEvents = function(endDate) {
+    var deposits = [], compounds = [], t = moment();
+
+    while (t.isBefore(endDate)) {
+        deposits.push({
+            date: t.format('X'),
+            type: 'deposit',
+            amount: this.depositAmount
         });
-
-        now.add('days', this.depositPeriod);
+        t.add('days', this.depositPeriod);
     }
 
-    return balances;
+    t = moment();
+    while (t.isBefore(endDate)) {
+        compounds.push({
+            date: t.format('X'),
+            type: 'compound',
+            apr: this.apr
+        });
+        t.add('days', this.compoundPeriod);
+    }
+
+    function compareDates(a, b) {
+        if (a.date < b.date) {
+            return -1;
+        }
+        else if (a.date == b.date) {
+            return 0;
+        }
+        else {
+            return 1;
+        }
+    }
+
+    return this.mergeEventLists(deposits, compounds, compareDates);
+};
+
+
+/**
+ * Mergesort
+ * 
+ * @param left
+ * @param right
+ * @param compareFunction
+ * @return {Array}
+ */
+BalanceCalculator.prototype.mergeEventLists = function(left, right, compareFunction) {
+
+    var result  = [],
+        il      = 0,
+        ir      = 0;
+
+    while (il < left.length && ir < right.length){
+        if (compareFunction(left[il], right[ir]) <= 0){
+            result.push(left[il++]);
+        } else {
+            result.push(right[ir++]);
+        }
+    }
+
+    return result.concat(left.slice(il)).concat(right.slice(ir));
 };
