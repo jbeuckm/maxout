@@ -54,9 +54,13 @@ BalanceCalculator.prototype.getDataUntil = function(endDate) {
                     lastAverageBalanceDate = event.date;
                 }
 
-                var averageBalance = this.calculateAverageBalance(averageBalanceAccumulator);
-                console.log(averageBalance);
+                var bal = this.calculateAverageBalance(averageBalanceAccumulator);
                 averageBalanceAccumulator = [];
+
+                var yearFraction = bal.duration / 365;
+console.log(yearFraction, event.apr, bal.average);
+                this.balance += yearFraction * event.apr * bal.average;
+                this.recordBalance(balances, event.date, this.balance);
 
                 break;
         }
@@ -72,7 +76,10 @@ BalanceCalculator.prototype.calculateAverageBalance = function(vals) {
         totalBalance += val.days * val.balance;
         totalDuration += val.days;
     }
-    return totalBalance / totalDuration;
+    return {
+        average: totalBalance / totalDuration,
+        duration: totalDuration
+    };
 };
 
 BalanceCalculator.prototype.recordBalance = function(balances, date, balance) {

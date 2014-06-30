@@ -43,25 +43,7 @@
       <file leaf-file-name="BalanceCalculator.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/BalanceCalculator.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="0" selection-start="2305" selection-end="2305" vertical-scroll-proportion="0.50455374">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="styles.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/styles.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="11" selection-start="21" selection-end="21" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="55" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0">
+            <state line="60" column="48" selection-start="2012" selection-end="2012" vertical-scroll-proportion="0.26229507">
               <folding />
             </state>
           </provider>
@@ -510,20 +492,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="55" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="11" selection-start="21" selection-end="21" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="38" selection-start="744" selection-end="744" vertical-scroll-proportion="-2.64">
@@ -538,9 +506,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/css/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="11" selection-start="21" selection-end="21" vertical-scroll-proportion="0.055652175">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="55" selection-start="56" selection-end="56" vertical-scroll-proportion="0.02846975">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/BalanceCalculator.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="0" selection-start="2305" selection-end="2305" vertical-scroll-proportion="0.50455374">
+        <state line="60" column="48" selection-start="2012" selection-end="2012" vertical-scroll-proportion="0.26229507">
           <folding />
         </state>
       </provider>
