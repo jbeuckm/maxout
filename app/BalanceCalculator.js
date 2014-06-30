@@ -4,8 +4,8 @@ function BalanceCalculator(account, depositAmount, depositPeriod) {
     this.apr = parseFloat(account.apr);
     this.compoundPeriod = parseFloat(account.compoundPeriod);
 
-    this.depositAmount = parseFloat(depositAmount);
-    this.depositPeriod = parseFloat(depositPeriod);
+    this.transferAmount = parseFloat(depositAmount);
+    this.transferPeriod = parseFloat(depositPeriod);
 }
 
 /**
@@ -16,10 +16,29 @@ BalanceCalculator.prototype.getDataUntil = function(endDate) {
 
     var events = this.generateEvents(endDate);
 
-    console.log(events);
+    var balances = [];
 
+    var averageBalanceAccumulator = [];
+
+    for (var i= 0, l=events.length; i<l; i++) {
+        var event = events[i];
+        switch (event.type) {
+            case "deposit":
+                this.balance += event.amount;
+                this.recordBalance(balances, event.date, this.balance);
+                break;
+        }
+    }
+console.log(balances);
+    return balances;
 };
 
+BalanceCalculator.prototype.recordBalance = function(balances, date, balance) {
+    balances.push({
+        balance: balance,
+        date: date.format('YY-MMM-D')
+    });
+};
 
 /**
  * Build the list of deposits and compound events
@@ -30,17 +49,17 @@ BalanceCalculator.prototype.generateEvents = function(endDate) {
 
     while (t.isBefore(endDate)) {
         deposits.push({
-            date: t.format('X'),
+            date: t.clone(),
             type: 'deposit',
-            amount: this.depositAmount
+            amount: this.transferAmount
         });
-        t.add('days', this.depositPeriod);
+        t.add('days', this.transferPeriod);
     }
 
     t = moment();
     while (t.isBefore(endDate)) {
         compounds.push({
-            date: t.format('X'),
+            date: t.clone(),
             type: 'compound',
             apr: this.apr
         });
@@ -65,7 +84,7 @@ BalanceCalculator.prototype.generateEvents = function(endDate) {
 
 /**
  * Mergesort
- * 
+ *
  * @param left
  * @param right
  * @param compareFunction
