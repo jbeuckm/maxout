@@ -19,18 +19,53 @@ BalanceCalculator.prototype.getDataUntil = function(endDate) {
     var balances = [];
 
     var averageBalanceAccumulator = [];
+    var lastAverageBalanceDate = moment();
 
     for (var i= 0, l=events.length; i<l; i++) {
         var event = events[i];
         switch (event.type) {
-            case "deposit":
+
+            case "transfer":
+
+                // keep track of days at previous balance
+                var duration = event.date.diff(lastAverageBalanceDate, 'days');
+                if (duration > 0) {
+                    averageBalanceAccumulator.push({
+                        days: duration,
+                        balance: this.balance
+                    });
+                    lastAverageBalanceDate = event.date;
+                }
+
                 this.balance += event.amount;
                 this.recordBalance(balances, event.date, this.balance);
+
+                break;
+
+            case "compound":
+
+                // keep track of days at previous balance
+                var duration = event.date.diff(lastAverageBalanceDate, 'days');
+                if (duration > 0) {
+                    averageBalanceAccumulator.push({
+                        days: duration,
+                        balance: this.balance
+                    });
+                    lastAverageBalanceDate = event.date;
+                }
+
+                var averageBalance = this.calculateAverageBalance(averageBalanceAccumulator);
+                averageBalanceAccumulator = [];
+
                 break;
         }
     }
-console.log(balances);
+
     return balances;
+};
+
+BalanceCalculator.prototype.calculateAverageBalance = function(vals) {
+    console.log(vals);
 };
 
 BalanceCalculator.prototype.recordBalance = function(balances, date, balance) {
@@ -48,22 +83,22 @@ BalanceCalculator.prototype.generateEvents = function(endDate) {
     var deposits = [], compounds = [], t = moment();
 
     while (t.isBefore(endDate)) {
+        t.add('days', this.transferPeriod);
         deposits.push({
             date: t.clone(),
-            type: 'deposit',
+            type: 'transfer',
             amount: this.transferAmount
         });
-        t.add('days', this.transferPeriod);
     }
 
     t = moment();
     while (t.isBefore(endDate)) {
+        t.add('days', this.compoundPeriod);
         compounds.push({
             date: t.clone(),
             type: 'compound',
             apr: this.apr
         });
-        t.add('days', this.compoundPeriod);
     }
 
     function compareDates(a, b) {
