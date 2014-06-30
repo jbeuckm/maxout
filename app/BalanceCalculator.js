@@ -55,6 +55,7 @@ BalanceCalculator.prototype.getDataUntil = function(endDate) {
                 }
 
                 var averageBalance = this.calculateAverageBalance(averageBalanceAccumulator);
+                console.log(averageBalance);
                 averageBalanceAccumulator = [];
 
                 break;
@@ -65,7 +66,13 @@ BalanceCalculator.prototype.getDataUntil = function(endDate) {
 };
 
 BalanceCalculator.prototype.calculateAverageBalance = function(vals) {
-    console.log(vals);
+    var totalBalance= 0, totalDuration=0;
+    for (var i= 0, l=vals.length; i<l; i++) {
+        var val = vals[i];
+        totalBalance += val.days * val.balance;
+        totalDuration += val.days;
+    }
+    return totalBalance / totalDuration;
 };
 
 BalanceCalculator.prototype.recordBalance = function(balances, date, balance) {
