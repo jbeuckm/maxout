@@ -66,14 +66,14 @@ angular.module('maxout').directive('projectionGraph', [function () {
             function drawData(data) {
 
                 if (!data) return;
-console.log(data);
 
+                // get unique account names from first data point
                 color.domain(d3.keys(data[0]).filter(function(key) { return key !== "date"; }));
                 data.forEach(function(d) {
                     d.date = parseDate(d.date);
                 });
 
-                var browsers = stack(color.domain().map(function(name) {
+                var accounts = stack(color.domain().map(function(name) {
                     return {
                         name: name,
                         values: data.map(function(d) {
@@ -81,21 +81,22 @@ console.log(data);
                         })
                     };
                 }));
+                console.log(accounts);
 
                 x.domain(d3.extent(data, function(d) { return d.date; }));
                 y.domain(d3.extent(data, function(d) { return d.balance; }));
 
-                var browser = svg.selectAll(".browser")
-                    .data(browsers)
+                var account = svg.selectAll(".account")
+                    .data(accounts)
                     .enter().append("g")
-                    .attr("class", "browser");
+                    .attr("class", "account");
 
-                browser.append("path")
+                account.append("path")
                     .attr("class", "area")
                     .attr("d", function(d) { return area(d.values); })
                     .style("fill", function(d) { return color(d.name); });
 
-                browser.append("text")
+                account.append("text")
                     .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
                     .attr("transform", function(d) {
                         var xData = d.value.date;

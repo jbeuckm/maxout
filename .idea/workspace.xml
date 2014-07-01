@@ -40,10 +40,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProjectionGraph.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ProjectionGraph.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/directives/ProjectionGraph.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="71" selection-start="2903" selection-end="2912" vertical-scroll-proportion="-2.1538463">
+            <state line="89" column="33" selection-start="3088" selection-end="3095" vertical-scroll-proportion="0.9368836">
               <folding />
             </state>
           </provider>
@@ -58,10 +58,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BalanceCalculator.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="BalanceCalculator.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/BalanceCalculator.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="107" column="17" selection-start="3199" selection-end="3199" vertical-scroll-proportion="0.8251366">
+            <state line="107" column="17" selection-start="3199" selection-end="3199" vertical-scroll-proportion="-16.192308">
               <folding />
             </state>
           </provider>
@@ -83,8 +83,8 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/css/styles.css" />
         <option value="$PROJECT_DIR$/app/exampleData.json" />
-        <option value="$PROJECT_DIR$/app/directives/ProjectionGraph.js" />
         <option value="$PROJECT_DIR$/app/BalanceCalculator.js" />
+        <option value="$PROJECT_DIR$/app/directives/ProjectionGraph.js" />
       </list>
     </option>
   </component>
@@ -539,16 +539,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/directives/ProjectionGraph.js">
+    <entry file="file://$PROJECT_DIR$/app/BalanceCalculator.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="71" selection-start="2903" selection-end="2912" vertical-scroll-proportion="-2.1538463">
+        <state line="107" column="17" selection-start="3199" selection-end="3199" vertical-scroll-proportion="-16.192308">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/BalanceCalculator.js">
+    <entry file="file://$PROJECT_DIR$/app/directives/ProjectionGraph.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="17" selection-start="3199" selection-end="3199" vertical-scroll-proportion="0.8251366">
+        <state line="89" column="33" selection-start="3088" selection-end="3095" vertical-scroll-proportion="0.9368836">
           <folding />
         </state>
       </provider>
