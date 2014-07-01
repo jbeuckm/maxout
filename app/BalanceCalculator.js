@@ -1,5 +1,8 @@
 
 function BalanceCalculator(account, depositAmount, depositPeriod) {
+
+    this.title = account.title;
+
     this.balance = parseFloat(account.balance);
     this.apr = parseFloat(account.apr);
     this.compoundPeriod = parseFloat(account.compoundPeriod);
@@ -38,8 +41,7 @@ BalanceCalculator.prototype.getDataUntil = function(endDate) {
                 }
 
                 if (this.testZeroCrossing(this.balance, event.amount)) {
-                    this.balance = 0;
-                    this.recordBalance(balances, event.date, this.balance);
+                    this.recordBalance(balances, event.date, 0);
                     return balances;
                 }
 
@@ -79,7 +81,7 @@ BalanceCalculator.prototype.testZeroCrossing = function(balance, amount) {
     if (balance >= 0 && (balance + amount) <= 0) {
         return true;
     }
-    if (balance <= 0 && (balance + amount) >= 0) {
+    else if (balance <= 0 && (balance + amount) >= 0) {
         return true;
     }
     return false;
@@ -100,10 +102,11 @@ BalanceCalculator.prototype.calculateAverageBalance = function(vals) {
 };
 
 BalanceCalculator.prototype.recordBalance = function(balances, date, balance) {
-    balances.push({
-        balance: balance,
+    var data = {
         date: date.format('YY-MMM-D')
-    });
+    };
+    data['balance'] = balance;
+    balances.push(data);
 };
 
 /**
