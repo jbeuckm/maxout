@@ -68,7 +68,9 @@ angular.module('maxout').directive('projectionGraph', [function () {
                 if (!data) return;
 
                 // get unique account names from first data point
-                color.domain(d3.keys(data[0]).filter(function(key) { return key !== "date"; }));
+                var accountNames = d3.keys(data[0]).filter(function(key) { return key !== "date"; });
+                color.domain(accountNames);
+
                 data.forEach(function(d) {
                     d.date = parseDate(d.date);
                 });
@@ -81,7 +83,8 @@ angular.module('maxout').directive('projectionGraph', [function () {
                         })
                     };
                 }));
-                console.log(accounts);
+console.log(accounts);
+console.log(newData);
 
                 x.domain(d3.extent(data, function(d) { return d.date; }));
                 y.domain(d3.extent(data, function(d) { return d.balance; }));
@@ -117,15 +120,22 @@ angular.module('maxout').directive('projectionGraph', [function () {
                     .call(yAxis);
 
             }
-
+var newData;
             function getData(accounts) {
 
                 var calculators = {};
+                newData = [];
                 for (var i= 0, l=accounts.length; i<l; i++) {
                     var account = accounts[i];
                     calculators[account.title] = new BalanceCalculator(account, 500, 30);
+
+                    newData[i] = {
+                        name: account.title,
+                        values: calculators[account.title].getDataUntil(moment().add('years', 5))
+                    };
                 }
 
+                return newData[0].values;
                 return calculators[accounts[0].title].getDataUntil(moment().add('years', 5));
             }
 
