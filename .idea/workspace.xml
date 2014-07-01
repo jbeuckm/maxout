@@ -43,7 +43,7 @@
       <file leaf-file-name="ProjectionGraph.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/directives/ProjectionGraph.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="0" selection-start="2377" selection-end="2377" vertical-scroll-proportion="0.21104537">
+            <state line="70" column="0" selection-start="2209" selection-end="2275" vertical-scroll-proportion="0.27416173">
               <folding />
             </state>
           </provider>
@@ -548,7 +548,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/directives/ProjectionGraph.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="0" selection-start="2377" selection-end="2377" vertical-scroll-proportion="0.21104537">
+        <state line="70" column="0" selection-start="2209" selection-end="2275" vertical-scroll-proportion="0.27416173">
           <folding />
         </state>
       </provider>

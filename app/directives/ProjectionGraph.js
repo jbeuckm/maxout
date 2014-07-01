@@ -75,7 +75,7 @@ angular.module('maxout').directive('projectionGraph', [function () {
                     d.date = parseDate(d.date);
                 });
 
-                var accounts = stack(color.domain().map(function(name) {
+                var accounts = stack(accountNames.map(function(name) {
                     return {
                         name: name,
                         values: data.map(function(d) {
