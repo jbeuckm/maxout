@@ -37,6 +37,12 @@ BalanceCalculator.prototype.getDataUntil = function(endDate) {
                     lastAverageBalanceDate = event.date;
                 }
 
+                if (this.testZeroCrossing(this.balance, event.amount)) {
+                    this.balance = 0;
+                    this.recordBalance(balances, event.date, this.balance);
+                    return balances;
+                }
+
                 this.balance += event.amount;
                 this.recordBalance(balances, event.date, this.balance);
 
@@ -58,7 +64,7 @@ BalanceCalculator.prototype.getDataUntil = function(endDate) {
                 averageBalanceAccumulator = [];
 
                 var yearFraction = bal.duration / 365;
-console.log(yearFraction, event.apr, bal.average);
+
                 this.balance += yearFraction * event.apr * bal.average;
                 this.recordBalance(balances, event.date, this.balance);
 
@@ -68,6 +74,17 @@ console.log(yearFraction, event.apr, bal.average);
 
     return balances;
 };
+
+BalanceCalculator.prototype.testZeroCrossing = function(balance, amount) {
+    if (balance >= 0 && (balance + amount) <= 0) {
+        return true;
+    }
+    if (balance <= 0 && (balance + amount) >= 0) {
+        return true;
+    }
+    return false;
+};
+
 
 BalanceCalculator.prototype.calculateAverageBalance = function(vals) {
     var totalBalance= 0, totalDuration=0;
