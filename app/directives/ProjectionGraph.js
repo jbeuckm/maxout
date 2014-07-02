@@ -70,11 +70,11 @@ angular.module('maxout').directive('projectionGraph', [function () {
                 var accountNames = newData.map(function(d){ return d.name; });
 
                 color.domain(accountNames);
-
+/*
                 data.forEach(function(d) {
                     d.date = parseDate(d.date);
                 });
-
+*/
                 console.log(newData);
                 accounts = newData;
 

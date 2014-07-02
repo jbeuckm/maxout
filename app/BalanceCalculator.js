@@ -103,11 +103,12 @@ BalanceCalculator.prototype.calculateAverageBalance = function(vals) {
 
 BalanceCalculator.prototype.recordBalance = function(balances, date, balance) {
     var data = {
-        date: date.format('YY-MMM-D')
+        date: date,
+        balance: balance,
+        y: balance,
+        y0: 0
     };
-    data['balance'] = balance;
-    data.y = balance;
-    data.y0 = 0;
+
     balances.push(data);
 };
 
