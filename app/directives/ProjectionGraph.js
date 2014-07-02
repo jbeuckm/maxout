@@ -10,7 +10,8 @@ angular.module('maxout').directive('projectionGraph', [function () {
         template: '<svg id="graph"></svg>',
         link: function (scope, element, attributes) {
 
-            var margin, width, height, parseDate, formatPercent, x, y, color, xAxis, yAxis, area, stack, svg
+            var margin, width, height, parseDate, formatPercent,
+                x, y, color, xAxis, yAxis, area, stack, svg, newData;
 
             scope.$watch('accounts', function(){
                 if (scope.accounts) {
@@ -70,16 +71,17 @@ angular.module('maxout').directive('projectionGraph', [function () {
                 var accountNames = newData.map(function(d){ return d.name; });
 
                 color.domain(accountNames);
-/*
-                data.forEach(function(d) {
-                    d.date = parseDate(d.date);
-                });
-*/
+
                 console.log(newData);
                 accounts = newData;
 
-                x.domain(d3.extent(data, function(d) { return d.date; }));
-                y.domain(d3.extent(data, function(d) { return d.balance; }));
+                var dateRanges = newData.map(function(d){ return d.dateRange[0]; });
+                dateRanges = dateRanges.concat(newData.map(function(d){ return d.dateRange[1]; }));
+                x.domain(d3.extent(dateRanges));
+
+                var balanceRanges = newData.map(function(d){ return d.balanceRange[0]; });
+                balanceRanges = balanceRanges.concat(newData.map(function(d){ return d.balanceRange[1]; }));
+                y.domain(d3.extent(balanceRanges));
 
                 var account = svg.selectAll(".account")
                     .data(accounts)
@@ -112,7 +114,7 @@ angular.module('maxout').directive('projectionGraph', [function () {
                     .call(yAxis);
 
             }
-var newData;
+
             function getData(accounts) {
 
                 var calculators = {};
@@ -121,14 +123,21 @@ var newData;
                     var account = accounts[i];
                     calculators[account.title] = new BalanceCalculator(account, 500, 30);
 
-                    newData[i] = {
+                    var data = {
                         name: account.title,
                         values: calculators[account.title].getDataUntil(moment().add('years', 5))
                     };
+
+                    data.dateRange = d3.extent(data.values, function(d) {
+                        return d.date;
+                    });
+                    data.balanceRange = d3.extent(data.values, function(d) {
+                        return d.balance;
+                    });
+                    newData.push(data);
                 }
 
                 return newData[0].values;
-                return calculators[accounts[0].title].getDataUntil(moment().add('years', 5));
             }
 
         }
