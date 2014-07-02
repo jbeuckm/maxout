@@ -43,7 +43,7 @@
       <file leaf-file-name="ProjectionGraph.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/directives/ProjectionGraph.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="0" selection-start="2288" selection-end="2288" vertical-scroll-proportion="0.17486338">
+            <state line="77" column="0" selection-start="2446" selection-end="2446" vertical-scroll-proportion="0.26229507">
               <folding />
             </state>
           </provider>
@@ -61,7 +61,7 @@
       <file leaf-file-name="BalanceCalculator.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/BalanceCalculator.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="107" column="17" selection-start="3199" selection-end="3199" vertical-scroll-proportion="0.0">
+            <state line="109" column="16" selection-start="3251" selection-end="3251" vertical-scroll-proportion="-10.653846">
               <folding />
             </state>
           </provider>
@@ -529,21 +529,21 @@
         <state line="1" column="55" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/BalanceCalculator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="109" column="16" selection-start="3251" selection-end="3251" vertical-scroll-proportion="-10.653846">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/exampleData.json">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/BalanceCalculator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="17" selection-start="3199" selection-end="3199" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/directives/ProjectionGraph.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="0" selection-start="2288" selection-end="2288" vertical-scroll-proportion="0.17486338">
+        <state line="77" column="0" selection-start="2446" selection-end="2446" vertical-scroll-proportion="0.26229507">
           <folding />
         </state>
       </provider>

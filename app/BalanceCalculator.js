@@ -106,6 +106,8 @@ BalanceCalculator.prototype.recordBalance = function(balances, date, balance) {
         date: date.format('YY-MMM-D')
     };
     data['balance'] = balance;
+    data.y = balance;
+    data.y0 = 0;
     balances.push(data);
 };
 

@@ -75,17 +75,8 @@ angular.module('maxout').directive('projectionGraph', [function () {
                     d.date = parseDate(d.date);
                 });
 
-                var accounts = stack(accountNames.map(function(name) {
-                    return {
-                        name: name,
-                        values: data.map(function(d) {
-                            return {date: d.date, y: d.balance };
-                        })
-                    };
-                }));
-console.log(accounts);
-console.log(newData);
-//accounts = newData;
+                console.log(newData);
+                accounts = newData;
 
                 x.domain(d3.extent(data, function(d) { return d.date; }));
                 y.domain(d3.extent(data, function(d) { return d.balance; }));
