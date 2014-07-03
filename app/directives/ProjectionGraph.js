@@ -84,6 +84,19 @@ angular.module('maxout').directive('projectionGraph', [function () {
                 balanceRanges = balanceRanges.concat(newData.map(function(d){ return d.balanceRange[1]; }));
                 y.domain(d3.extent(balanceRanges));
 
+
+/*
+                var browsers = stack(accountNames.map(function(name) {
+                    return {
+                        name: name,
+                        values: data.map(function(d) {
+                            return {date: d.date, y: d[name] / 100};
+                        })
+                    };
+                }));
+*/
+
+
                 var account = svg.selectAll(".account")
                     .data(accounts)
                     .enter().append("g")
