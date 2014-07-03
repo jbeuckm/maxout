@@ -31,7 +31,7 @@ angular.module('maxout').directive('projectionGraph', [function () {
                     height = 500 - margin.top - margin.bottom;
 
                 parseDate = d3.time.format('%y-%b-%d').parse;
-                    formatPercent = d3.format(".0%");
+                formatPercent = d3.format(".0%");
 
                 x = d3.time.scale()
                     .range([0, width]);

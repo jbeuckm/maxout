@@ -1,4 +1,8 @@
 
+body {
+  font-family: Helvetica, Arial;
+}
+
 #graph {
   height: 500px;
 }
