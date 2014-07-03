@@ -1,14 +1,14 @@
 
-function BalanceCalculator(account, depositAmount, depositPeriod) {
+function BalanceCalculator(account) {
 
     this.title = account.title;
 
-    this.balance = parseFloat(account.balance);
-    this.apr = parseFloat(account.apr);
-    this.compoundPeriod = parseFloat(account.compoundPeriod);
+    this.balance = account.balance;
+    this.apr = account.apr;
+    this.compoundPeriod = account.compoundPeriod;
 
-    this.transferAmount = parseFloat(depositAmount);
-    this.transferPeriod = parseFloat(depositPeriod);
+    this.transferAmount = account.transferAmount;
+    this.transferPeriod = account.transferPeriod;
 }
 
 /**

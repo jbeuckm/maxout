@@ -14,6 +14,7 @@ angular.module('maxout').directive('projectionGraph', [function () {
                 x, y, color, xAxis, yAxis, area, stack, svg, newData;
 
             scope.$watch('accounts', function(){
+                console.log('accounts changed');
                 if (scope.accounts) {
                     scope.balances = getData(scope.accounts);
                     drawData(scope.balances);
@@ -127,7 +128,6 @@ angular.module('maxout').directive('projectionGraph', [function () {
                         name: account.title,
                         values: calculators[account.title].getDataUntil(moment().add('years', 5))
                     };
-
                     data.dateRange = d3.extent(data.values, function(d) {
                         return d.date;
                     });
@@ -137,7 +137,12 @@ angular.module('maxout').directive('projectionGraph', [function () {
                     newData.push(data);
                 }
 
-                return newData[0].values;
+                if (newData.length > 0) {
+                    return newData[0].values;
+                }
+                else {
+                    return null;
+                }
             }
 
         }

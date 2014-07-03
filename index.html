@@ -12,7 +12,9 @@
   <script src="bower_components/angular-moment/angular-moment.js"></script>
   <script src="bower_components/angular-percentage-filter/percentage.js"></script>
 
+
   <script src="app/app.js"></script>
+  <script src="app/directives/labeledSlider.js"></script>
   <script src="app/services/PortfolioService.js"></script>
   <script src="app/directives/ProjectionGraph.js"></script>
   <script src="app/BalanceCalculator.js"></script>
@@ -31,6 +33,7 @@
       <th>Balance</th>
       <th>APR</th>
       <th>Compounds</th>
+      <th>Payment</th>
       <th>Delete</th>
     </tr>
 
@@ -39,6 +42,9 @@
       <td>{{account.balance}}</td>
       <td>{{account.apr | percentage}}</td>
       <td>{{account.compoundPeriod}} days</td>
+      <td>
+        <labeled-slider label="" min ="1" max="50" step =".0625" ng-model="account.transferAmount"></labeled-slider>
+      </td>
       <td class="delete-cell"><a ng-click="removeAccount(index)">X</a></td>
     </tr>
 
@@ -59,7 +65,18 @@
       <option value="30">monthly</option>
     </select>
 
+
+    <label for="transferAmount">Payment</label>
+    <input id="transferAmount" ng-model="transferAmount" placeholder="amount of payment"/>
+    <label for="transferPeriod">Payment Period</label>
+    <select id="transferPeriod" ng-model="transferPeriod">
+      <option value="1">daily</option>
+      <option value="7">weekly</option>
+      <option value="30">monthly</option>
+    </select>
+
     <input type="submit" value="Add Account"/>
+
   </form>
 
 </div>
