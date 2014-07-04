@@ -37,7 +37,7 @@
       <th>Delete</th>
     </tr>
 
-    <tr ng-repeat="(index, account) in accounts track by $index">
+    <tr ng-repeat="(index, account) in accounts track by $index" class="{{account.type + 'Row'}}">
       <td>{{account.title}}</td>
       <td>{{account.balance}}</td>
       <td>{{account.apr | percentage}}</td>
@@ -51,12 +51,20 @@
   </table>
 
   <form ng-submit="addAccount()">
+
+    <label for="accountType">Type</label>
+    <select id="accountType" ng-model="accountType">
+      <option value="investment">investment</option>
+      <option value="loan">loan</option>
+    </select>
+
     <label for="title">Title</label>
     <input id="title" ng-model="titleText" placeholder="title"/>
     <label for="balance">Balance</label>
     <input id="balance" ng-model="balanceText" placeholder="current balance"/>
     <label for="apr">APR</label>
-    <input id="apr" ng-model="aprText" placeholder="interest rate"/>
+    <input id="apr" ng-model="aprText" placeholder="percent"/>
+    <label for="apr">%</label>
 
     <label for="compoundPeriod">Compounds</label>
     <select id="compoundPeriod" ng-model="compoundPeriod" disabled>
@@ -67,7 +75,7 @@
 
 
     <label for="transferAmount">Payment</label>
-    <input id="transferAmount" ng-model="transferAmount" placeholder="amount of payment"/>
+    <input id="transferAmount" ng-model="transferAmount" placeholder="amount"/>
     <label for="transferPeriod">Payment Period</label>
     <select id="transferPeriod" ng-model="transferPeriod" disabled>
       <option value="1">daily</option>

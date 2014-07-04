@@ -4,9 +4,23 @@ body {
 }
 
 #graph {
-  height: 500px;
+  height: 300px;
 }
 
 .axis {
   stroke-width: 1px;
+}
+
+#apr {
+  width: 50px;
+}
+#transferAmount {
+  width: 100px;
+}
+
+.investmentRow {
+  background-color: #dfd;
+}
+.loanRow {
+  background-color: #fdd;
 }
