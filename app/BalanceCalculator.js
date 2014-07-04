@@ -112,6 +112,16 @@ BalanceCalculator.prototype.recordBalance = function(balances, date, balance) {
     balances.push(data);
 };
 
+BalanceCalculator.prototype.getTransferEventAmount = function() {
+    switch (this.accountType) {
+        case 'loan':
+            return -this.transferAmount;
+        case 'investment':
+            return this.transferAmount;
+    }
+};
+
+
 /**
  * Build the list of deposits and compound events
  * @param endDate
@@ -124,7 +134,7 @@ BalanceCalculator.prototype.generateEvents = function(endDate) {
         deposits.push({
             date: t.clone(),
             type: 'transfer',
-            amount: this.transferAmount
+            amount: this.getTransferEventAmount()
         });
     }
 

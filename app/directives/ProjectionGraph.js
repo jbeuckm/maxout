@@ -109,19 +109,37 @@ angular.module('maxout').directive('projectionGraph', [function () {
                 }
                 y.domain([-min, max]);
 console.log('y domain '+min+", "+max);
-                drawSeries(loans, 'loan', -1);
+                drawSeries(loans, 'loan', true);
                 drawSeries(investments, 'investment');
+
+                svg.append("g")
+                    .attr("class", "x axis")
+                    .attr("transform", "translate(0," + height + ")")
+                    .call(xAxis);
+
+                svg.append("g")
+                    .attr("class", "y axis")
+                    .call(yAxis);
             }
 
-            function drawSeries(accounts, class_name) {
+            function drawSeries(accounts, class_name, invert) {
                 var account = svg.selectAll("."+class_name)
                     .data(accounts)
                     .enter().append("g")
                     .attr("class", class_name);
 
+                function getValues(d) {
+                    if (invert) {
+                        return d.values.map(function(d){d.y *= -1; return d;});
+                    }
+                    else {
+                        return d.values;
+                    }
+                }
+
                 account.append("path")
                     .attr("class", "area")
-                    .attr("d", function(d) { return area(d.values); })
+                    .attr("d", function(d) { return area(getValues(d)); })
                     .style("fill", function(d) { return color(d.name); });
 
                 account.append("text")
@@ -135,14 +153,6 @@ console.log('y domain '+min+", "+max);
                     .attr("dy", ".35em")
                     .text(function(d) { return d.name; });
 
-                svg.append("g")
-                    .attr("class", "x axis")
-                    .attr("transform", "translate(0," + height + ")")
-                    .call(xAxis);
-
-                svg.append("g")
-                    .attr("class", "y axis")
-                    .call(yAxis);
             }
 
             function calculateBalances(accounts) {
