@@ -82,7 +82,7 @@ angular.module('maxout').directive('projectionGraph', [function () {
                 var investments = [], loans = [];
                 for (var i= 0, l=accounts.length; i<l; i++) {
                     var account = accounts[i];
-                    console.log(account);
+
                     switch (account.accountType) {
                         case 'investment':
                             investments.push(account);
@@ -93,14 +93,14 @@ angular.module('maxout').directive('projectionGraph', [function () {
                     }
                 }
                 var min = 0, max = 0;
-                console.log(loans);
+
                 if (loans.length > 0) {
                     stack(loans);
                     var lastLoan = loans[loans.length-1];
                     var firstValue = lastLoan.values[0];
                     min = firstValue.y0 + firstValue.y;
                 }
-                console.log(investments);
+
                 if (investments.length > 0) {
                     stack(investments);
                     var lastInvestment = investments[investments.length-1];
@@ -108,7 +108,7 @@ angular.module('maxout').directive('projectionGraph', [function () {
                     max = lastValue.y0 + lastValue.y;
                 }
                 y.domain([-min, max]);
-console.log('y domain '+min+", "+max);
+
                 drawSeries(loans, 'loan', true);
                 drawSeries(investments, 'investment');
 
