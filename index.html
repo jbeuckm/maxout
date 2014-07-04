@@ -37,7 +37,7 @@
       <th>Delete</th>
     </tr>
 
-    <tr ng-repeat="(index, account) in accounts track by $index" class="{{account.type + 'Row'}}">
+    <tr ng-repeat="(index, account) in accounts track by $index" class="{{account.accountType + 'Row'}}">
       <td>{{account.title}}</td>
       <td>{{account.balance}}</td>
       <td>{{account.apr | percentage}}</td>

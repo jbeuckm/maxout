@@ -12,7 +12,7 @@ angular.module('maxout').controller('MainController', ['$scope', 'PortfolioServi
 
     $scope.addAccount = function(){
         $scope.accounts.push({
-            type: $scope.accountType,
+            accountType: $scope.accountType,
             title: $scope.titleText,
             balance: parseFloat($scope.balanceText),
             apr: parseFloat($scope.aprText) / 100,

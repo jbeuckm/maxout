@@ -2,6 +2,7 @@
 function BalanceCalculator(account) {
 
     this.title = account.title;
+    this.accountType = account.accountType;
 
     this.balance = account.balance;
     this.apr = account.apr;

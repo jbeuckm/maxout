@@ -73,40 +73,44 @@ angular.module('maxout').directive('projectionGraph', [function () {
 
                 color.domain(accountNames);
 
-                console.log(data);
-                accounts = data;
+                var accounts = data;
 
                 var dateRanges = data.map(function(d){ return d.dateRange[0]; });
                 dateRanges = dateRanges.concat(data.map(function(d){ return d.dateRange[1]; }));
                 x.domain(d3.extent(dateRanges));
 
-                var debts = [], loans = [];
+                var investments = [], loans = [];
                 for (var i= 0, l=accounts.length; i<l; i++) {
                     var account = accounts[i];
-                    if (account.balance < 0) {
-                        debts.push(account);
-                    } else {
-                        loans.push(account);
+                    console.log(account);
+                    switch (account.accountType) {
+                        case 'investment':
+                            investments.push(account);
+                            break;
+                        case 'loan':
+                            loans.push(account);
+                            break;
                     }
                 }
                 var min = 0, max = 0;
-                if (debts.length > 0) {
-                    stack(debts);
-                    var lastDebt = debts[debts.length-1];
-                    var firstValue = lastDebt.values[0];
-                    min = firstValue.y0 + firstValue.y;
-                }
+                console.log(loans);
                 if (loans.length > 0) {
                     stack(loans);
-
                     var lastLoan = loans[loans.length-1];
-                    var lastValue = lastLoan.values[lastLoan.values.length-1];
+                    var firstValue = lastLoan.values[0];
+                    min = firstValue.y0 + firstValue.y;
+                }
+                console.log(investments);
+                if (investments.length > 0) {
+                    stack(investments);
+                    var lastInvestment = investments[investments.length-1];
+                    var lastValue = lastInvestment.values[lastInvestment.values.length-1];
                     max = lastValue.y0 + lastValue.y;
                 }
-                y.domain([min, max]);
-
-                drawSeries(loans, 'loans');
-                drawSeries(debts, 'debts');
+                y.domain([-min, max]);
+console.log('y domain '+min+", "+max);
+                drawSeries(loans, 'loan', -1);
+                drawSeries(investments, 'investment');
             }
 
             function drawSeries(accounts, class_name) {
@@ -151,6 +155,7 @@ angular.module('maxout').directive('projectionGraph', [function () {
 
                     var datum = {
                         name: account.title,
+                        accountType: account.accountType,
                         values: calculators[account.title].calculateBalancesUntil(moment().add('years', 15))
                     };
                     datum.dateRange = d3.extent(datum.values, function(d) {
