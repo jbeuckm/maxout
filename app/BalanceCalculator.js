@@ -1,4 +1,9 @@
-
+/**
+ * Find balance data over time for a given account.
+ *
+ * @param account
+ * @constructor
+ */
 function BalanceCalculator(account) {
 
     this.title = account.title;
@@ -92,13 +97,18 @@ BalanceCalculator.prototype.testZeroCrossing = function(balance, amount) {
     return false;
 };
 
-
-BalanceCalculator.prototype.calculateAverageBalance = function(vals) {
+/**
+ * Find recent average balance in order to apply interest
+ *
+ * @param values
+ * @return {Object}
+ */
+BalanceCalculator.prototype.calculateAverageBalance = function(values) {
     var totalBalance= 0, totalDuration=0;
-    for (var i= 0, l=vals.length; i<l; i++) {
-        var val = vals[i];
-        totalBalance += val.days * val.balance;
-        totalDuration += val.days;
+    for (var i= 0, l=values.length; i<l; i++) {
+        var value = values[i];
+        totalBalance += value.days * value.balance;
+        totalDuration += value.days;
     }
     return {
         average: totalBalance / totalDuration,
@@ -106,6 +116,13 @@ BalanceCalculator.prototype.calculateAverageBalance = function(vals) {
     };
 };
 
+/**
+ * Add a datum to the given working array.
+ *
+ * @param balances
+ * @param date
+ * @param balance
+ */
 BalanceCalculator.prototype.recordBalance = function(balances, date, balance) {
     var data = {
         date: date,
@@ -116,6 +133,11 @@ BalanceCalculator.prototype.recordBalance = function(balances, date, balance) {
     balances.push(data);
 };
 
+/**
+ * Get appropriate balance increment for event type.
+ *
+ * @return {*}
+ */
 BalanceCalculator.prototype.getTransferEventAmount = function() {
     switch (this.accountType) {
         case 'loan':

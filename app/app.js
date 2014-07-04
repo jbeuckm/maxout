@@ -20,13 +20,15 @@ angular.module('maxout').controller('MainController', ['$scope', 'PortfolioServi
             transferPeriod: parseFloat($scope.transferPeriod),
             transferAmount: parseFloat($scope.transferAmount)
         });
-
-        PortfolioService.savePortfolio($scope.accounts);
     };
+
+    // save after any and every change in the accounts array
+    $scope.$watch('accounts', function(){
+        PortfolioService.savePortfolio($scope.accounts);
+    }, true);
 
     $scope.removeAccount = function(index) {
         $scope.accounts.splice(index, 1);
-        PortfolioService.savePortfolio($scope.accounts);
     };
 
 }]);

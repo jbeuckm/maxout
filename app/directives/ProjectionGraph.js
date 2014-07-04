@@ -11,7 +11,8 @@ angular.module('maxout').directive('projectionGraph', [function () {
         link: function (scope, element, attributes) {
 
             var margin, width, height, parseDate, formatPercent,
-                x, y, color, xAxis, yAxis, area, invertedArea, stack, svg;
+                x, y, color, xAxis, yAxis, area, invertedArea, stack,
+                svg, xAxisGroup, yAxisGroup, loanSeries, investmentSeries;
 
             scope.$watch('accounts', function(){
                 console.log('accounts changed');
@@ -19,14 +20,13 @@ angular.module('maxout').directive('projectionGraph', [function () {
                     scope.balanceData = calculateBalances(scope.accounts);
                     drawData(scope.balanceData);
                 }
-            });
+            }, true);
 
             setup();
 
 
             function setup() {
-                margin = {
-                        top: 20, right: 100, bottom: 30, left: 100};
+                margin = { top: 20, right: 100, bottom: 30, left: 100 };
                     width = 960 - margin.left - margin.right;
                     height = 300 - margin.top - margin.bottom;
 
@@ -98,15 +98,14 @@ angular.module('maxout').directive('projectionGraph', [function () {
                             break;
                     }
                 }
-                var min = 0, max = 0;
 
+                var min = 0, max = 0;
                 if (loans.length > 0) {
                     stack(loans);
                     var lastLoan = loans[loans.length-1];
                     var firstValue = lastLoan.values[0];
                     min = firstValue.y0 + firstValue.y;
                 }
-
                 if (investments.length > 0) {
                     stack(investments);
                     var lastInvestment = investments[investments.length-1];
@@ -115,17 +114,17 @@ angular.module('maxout').directive('projectionGraph', [function () {
                 }
                 y.domain([-min, max]);
 
-                drawSeries(loans, 'loan', true);
-                drawSeries(investments, 'investment');
-
-                svg.append("g")
+                xAxisGroup = svg.append("g")
                     .attr("class", "x axis")
                     .attr("transform", "translate(0," + height + ")")
                     .call(xAxis);
 
-                svg.append("g")
+                yAxisGroup = svg.append("g")
                     .attr("class", "y axis")
                     .call(yAxis);
+
+                loanSeries = drawSeries(loans, 'loan', true);
+                investmentSeries = drawSeries(investments, 'investment');
             }
 
             function drawSeries(accounts, class_name, invert) {
@@ -150,6 +149,7 @@ angular.module('maxout').directive('projectionGraph', [function () {
                     .attr("dy", ".35em")
                     .text(function(d) { return d.name; });
 
+                return account;
             }
 
             function calculateBalances(accounts) {

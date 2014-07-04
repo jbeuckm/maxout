@@ -43,7 +43,7 @@
       <td>{{account.apr | percentage}}</td>
       <td>{{account.compoundPeriod}} days</td>
       <td>
-        <labeled-slider label="" min ="0" step =".0625" ng-model="account.transferAmount"></labeled-slider>
+        <labeled-slider label="" min ="0" step ="1" ng-model="account.transferAmount"></labeled-slider>
       </td>
       <td class="delete-cell"><a ng-click="removeAccount(index)">X</a></td>
     </tr>

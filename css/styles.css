@@ -7,8 +7,10 @@ body {
   height: 300px;
 }
 
-.axis {
+.axis path, .axis line {
+  stroke: #000;
   stroke-width: 1px;
+  fill: none;
 }
 
 #apr {
