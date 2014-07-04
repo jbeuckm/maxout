@@ -6,3 +6,7 @@ body {
 #graph {
   height: 500px;
 }
+
+.axis {
+  stroke-width: 1px;
+}

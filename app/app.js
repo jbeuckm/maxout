@@ -6,7 +6,9 @@ angular.module('maxout', ['percentage', 'angularMoment']).config(function(){
 angular.module('maxout').controller('MainController', ['$scope', 'PortfolioService', function($scope, PortfolioService){
 
     $scope.accounts = PortfolioService.loadPortfolio() || [];
-//    $scope.accounts = [];
+
+    $scope.compoundPeriod = 30;
+    $scope.transferPeriod = 30;
 
     $scope.addAccount = function(){
         $scope.accounts.push({

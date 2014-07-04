@@ -11,12 +11,12 @@ angular.module('maxout').directive('projectionGraph', [function () {
         link: function (scope, element, attributes) {
 
             var margin, width, height, parseDate, formatPercent,
-                x, y, color, xAxis, yAxis, area, stack, svg, newData;
+                x, y, color, xAxis, yAxis, area, loanStack, debtStack, svg;
 
             scope.$watch('accounts', function(){
                 console.log('accounts changed');
                 if (scope.accounts) {
-                    scope.balances = getData(scope.accounts);
+                    scope.balances = calculateBalances(scope.accounts);
                     drawData(scope.balances);
                 }
             });
@@ -54,7 +54,10 @@ angular.module('maxout').directive('projectionGraph', [function () {
                     .y0(function(d) { return y(d.y0); })
                     .y1(function(d) { return y(d.y0 + d.y); });
 
-                stack = d3.layout.stack()
+                loanStack = d3.layout.stack()
+                    .values(function(d) { return d.values; });
+
+                debtStack = d3.layout.stack()
                     .values(function(d) { return d.values; });
 
                 svg = d3.select('#'+element[0].id)
@@ -69,38 +72,47 @@ angular.module('maxout').directive('projectionGraph', [function () {
 
                 if (!data) return;
 
-                var accountNames = newData.map(function(d){ return d.name; });
+                var accountNames = data.map(function(d){ return d.name; });
 
                 color.domain(accountNames);
 
-                console.log(newData);
-                accounts = newData;
+                console.log(data);
+                accounts = data;
 
-                var dateRanges = newData.map(function(d){ return d.dateRange[0]; });
-                dateRanges = dateRanges.concat(newData.map(function(d){ return d.dateRange[1]; }));
+                var dateRanges = data.map(function(d){ return d.dateRange[0]; });
+                dateRanges = dateRanges.concat(data.map(function(d){ return d.dateRange[1]; }));
                 x.domain(d3.extent(dateRanges));
 
-                var balanceRanges = newData.map(function(d){ return d.balanceRange[0]; });
-                balanceRanges = balanceRanges.concat(newData.map(function(d){ return d.balanceRange[1]; }));
+                var balanceRanges = data.map(function(d){ return d.balanceRange[0]; });
+                balanceRanges = balanceRanges.concat(data.map(function(d){ return d.balanceRange[1]; }));
+                balanceRanges = balanceRanges.concat(0);
                 y.domain(d3.extent(balanceRanges));
 
+                var debts = [], loans = [];
+                for (var i= 0, l=accounts.length; i<l; i++) {
+                    var account = accounts[i];
+                    if (account.balance < 0) {
+                        debts.push(account);
+                    } else {
+                        loans.push(account);
+                    }
+                }
+                if (debts.length > 1) {
+                    debtStack(debts);
+                }
+                if (loans.length > 1) {
+                    loanStack(loans);
+                }
 
-/*
-                var browsers = stack(accountNames.map(function(name) {
-                    return {
-                        name: name,
-                        values: data.map(function(d) {
-                            return {date: d.date, y: d[name] / 100};
-                        })
-                    };
-                }));
-*/
+                drawSeries(loans, 'loans');
+                drawSeries(debts, 'debts');
+            }
 
-
-                var account = svg.selectAll(".account")
+            function drawSeries(accounts, class_name) {
+                var account = svg.selectAll("."+class_name)
                     .data(accounts)
                     .enter().append("g")
-                    .attr("class", "account");
+                    .attr("class", class_name);
 
                 account.append("path")
                     .attr("class", "area")
@@ -126,36 +138,31 @@ angular.module('maxout').directive('projectionGraph', [function () {
                 svg.append("g")
                     .attr("class", "y axis")
                     .call(yAxis);
-
             }
 
-            function getData(accounts) {
+            function calculateBalances(accounts) {
 
                 var calculators = {};
-                newData = [];
+                var data = [];
                 for (var i= 0, l=accounts.length; i<l; i++) {
                     var account = accounts[i];
                     calculators[account.title] = new BalanceCalculator(account, 500, 30);
 
-                    var data = {
+                    var datum = {
                         name: account.title,
-                        values: calculators[account.title].getDataUntil(moment().add('years', 5))
+                        values: calculators[account.title].calculateBalancesUntil(moment().add('years', 15))
                     };
-                    data.dateRange = d3.extent(data.values, function(d) {
+                    datum.dateRange = d3.extent(datum.values, function(d) {
                         return d.date;
                     });
-                    data.balanceRange = d3.extent(data.values, function(d) {
+                    datum.balanceRange = d3.extent(datum.values, function(d) {
                         return d.balance;
                     });
-                    newData.push(data);
+                    data.push(datum);
                 }
 
-                if (newData.length > 0) {
-                    return newData[0].values;
-                }
-                else {
-                    return null;
-                }
+                return data;
+
             }
 
         }

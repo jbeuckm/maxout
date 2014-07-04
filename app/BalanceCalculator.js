@@ -15,7 +15,7 @@ function BalanceCalculator(account) {
  * Calculate balance changes for now until the given end date.
  * @param endDate
  */
-BalanceCalculator.prototype.getDataUntil = function(endDate) {
+BalanceCalculator.prototype.calculateBalancesUntil = function(endDate) {
 
     var events = this.generateEvents(endDate);
 
@@ -105,8 +105,7 @@ BalanceCalculator.prototype.recordBalance = function(balances, date, balance) {
     var data = {
         date: date,
         balance: balance,
-        y: balance,
-        y0: 0
+        y: balance
     };
 
     balances.push(data);
