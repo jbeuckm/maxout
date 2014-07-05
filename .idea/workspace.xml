@@ -76,10 +76,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProjectionGraph.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ProjectionGraph.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/directives/ProjectionGraph.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="0" selection-start="2757" selection-end="2757" vertical-scroll-proportion="0.0">
+            <state line="98" column="37" selection-start="3313" selection-end="3313" vertical-scroll-proportion="0.07373272">
               <folding />
             </state>
           </provider>
@@ -94,10 +94,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BalanceCalculator.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="BalanceCalculator.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/workers/BalanceCalculator.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="127" column="28" selection-start="3672" selection-end="3672" vertical-scroll-proportion="0.44893113">
+            <state line="127" column="28" selection-start="3672" selection-end="3672" vertical-scroll-proportion="-14.538462">
               <folding />
             </state>
           </provider>
@@ -125,8 +125,8 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/app/workers/calculator_worker.js" />
         <option value="$PROJECT_DIR$/app/workers/CalculatorWorker.js" />
-        <option value="$PROJECT_DIR$/app/directives/ProjectionGraph.js" />
         <option value="$PROJECT_DIR$/app/workers/BalanceCalculator.js" />
+        <option value="$PROJECT_DIR$/app/directives/ProjectionGraph.js" />
       </list>
     </option>
   </component>
@@ -570,23 +570,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/MainController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="987" selection-end="987" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="44" selection-start="120" selection-end="149" vertical-scroll-proportion="-4.48">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/directives/ProjectionGraph.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="0" selection-start="2757" selection-end="2757" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -600,7 +586,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/workers/BalanceCalculator.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="28" selection-start="3672" selection-end="3672" vertical-scroll-proportion="0.44893113">
+        <state line="127" column="28" selection-start="3672" selection-end="3672" vertical-scroll-proportion="-14.538462">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/MainController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="0" selection-start="987" selection-end="987" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/directives/ProjectionGraph.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="98" column="37" selection-start="3313" selection-end="3313" vertical-scroll-proportion="0.07373272">
           <folding />
         </state>
       </provider>

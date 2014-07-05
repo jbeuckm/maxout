@@ -68,6 +68,16 @@ angular.module('maxout').directive('projectionGraph', [function () {
                     .attr("height", height + margin.top + margin.bottom)
                     .append("g")
                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                xAxisGroup = svg.append("g")
+                    .attr("class", "x axis")
+                    .attr("transform", "translate(0," + height + ")")
+                    .call(xAxis);
+
+                yAxisGroup = svg.append("g")
+                    .attr("class", "y axis")
+                    .call(yAxis);
+
             }
 
 
@@ -86,6 +96,9 @@ angular.module('maxout').directive('projectionGraph', [function () {
                 dateRanges = dateRanges.concat(data.map(function(d){ return d.dateRange[1]; }));
                 console.log(d3.extent(dateRanges));
                 x.domain(d3.extent(dateRanges));
+                svg.select(".x.axis")
+                    .transition()  // https://github.com/mbostock/d3/wiki/Transitions#wiki-d3_ease
+                    .call(xAxis);
 
                 var investments = [], loans = [];
                 for (var i= 0, l=accounts.length; i<l; i++) {
@@ -115,14 +128,8 @@ angular.module('maxout').directive('projectionGraph', [function () {
                     max = lastValue.y0 + lastValue.y;
                 }
                 y.domain([-min, max]);
-
-                xAxisGroup = svg.append("g")
-                    .attr("class", "x axis")
-                    .attr("transform", "translate(0," + height + ")")
-                    .call(xAxis);
-
-                yAxisGroup = svg.append("g")
-                    .attr("class", "y axis")
+                svg.select(".y.axis")
+                    .transition()  // https://github.com/mbostock/d3/wiki/Transitions#wiki-d3_ease
                     .call(yAxis);
 
                 loanSeries = drawSeries(loans, 'loan', true);
