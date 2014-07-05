@@ -14,11 +14,11 @@ angular.module('maxout').directive('projectionGraph', [function () {
                 x, y, color, xAxis, yAxis, area, invertedArea, stack,
                 svg, xAxisGroup, yAxisGroup, loanSeries, investmentSeries;
 
+
             scope.$watch('accounts', function(){
                 console.log('accounts changed');
                 if (scope.accounts) {
-                    scope.balanceData = calculateBalances(scope.accounts);
-                    drawData(scope.balanceData);
+                    calculateBalances(scope.accounts);
                 }
             }, true);
 
@@ -81,8 +81,10 @@ angular.module('maxout').directive('projectionGraph', [function () {
 
                 var accounts = data;
 
+
                 var dateRanges = data.map(function(d){ return d.dateRange[0]; });
                 dateRanges = dateRanges.concat(data.map(function(d){ return d.dateRange[1]; }));
+                console.log(d3.extent(dateRanges));
                 x.domain(d3.extent(dateRanges));
 
                 var investments = [], loans = [];
@@ -152,29 +154,15 @@ angular.module('maxout').directive('projectionGraph', [function () {
                 return account;
             }
 
+            scope.calculatorWorker = new Worker('app/workers/CalculatorWorker.js?v=' + Math.random());
             function calculateBalances(accounts) {
-
-                var calculators = {};
-                var data = [];
-                for (var i= 0, l=accounts.length; i<l; i++) {
-                    var account = accounts[i];
-                    calculators[account.title] = new BalanceCalculator(account);
-
-                    var datum = {
-                        name: account.title,
-                        accountType: account.accountType,
-                        values: calculators[account.title].calculateBalancesUntil(moment().add('years', 15))
-                    };
-                    datum.dateRange = d3.extent(datum.values, function(d) {
-                        return d.date;
-                    });
-
-                    data.push(datum);
-                }
-
-                return data;
-
+                scope.calculatorWorker.postMessage(accounts);
             }
+            function handleWorkerMessage(e) {
+                drawData(e.data);
+            }
+            scope.calculatorWorker.addEventListener('message', handleWorkerMessage, false);
+
 
         }
     };
