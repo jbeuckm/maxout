@@ -10,12 +10,12 @@ function BalanceCalculator(account) {
     this.accountType = account.accountType;
     this.complete = false;
 
-    this.balance = account.balance;
-    this.apr = account.apr;
-    this.compoundPeriod = account.compoundPeriod;
+    this.balance = parseFloat(account.balance);
+    this.apr = parseFloat(account.apr);
+    this.compoundPeriod = parseFloat(account.compoundPeriod);
 
-    this.transferAmount = account.transferAmount;
-    this.transferPeriod = account.transferPeriod;
+    this.transferAmount = parseFloat(account.transferAmount);
+    this.transferPeriod = parseFloat(account.transferPeriod);
 }
 
 /**
