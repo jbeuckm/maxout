@@ -15,8 +15,8 @@ angular.module('maxout').directive('projectionGraph', [function () {
                 svg, xAxisGroup, yAxisGroup, loanSeries, investmentSeries;
 
 
-            scope.$watch('accounts', function(){
-                console.log('accounts changed');
+            scope.$watch('accounts', function(e){
+                console.log('accounts changed '+JSON.stringify(e));
                 if (scope.accounts) {
                     calculateBalances(scope.accounts);
                 }
@@ -132,7 +132,13 @@ angular.module('maxout').directive('projectionGraph', [function () {
                     .transition()  // https://github.com/mbostock/d3/wiki/Transitions#wiki-d3_ease
                     .call(yAxis);
 
+                if (loanSeries) {
+                    loanSeries.remove();
+                }
                 loanSeries = drawSeries(loans, 'loan', true);
+                if (investmentSeries) {
+                    investmentSeries.remove();
+                }
                 investmentSeries = drawSeries(investments, 'investment');
             }
 
@@ -152,6 +158,7 @@ angular.module('maxout').directive('projectionGraph', [function () {
                     .attr("transform", function(d) {
                         var xData = d.value.date;
                         var yData = d.value.y0 + d.value.y / 2;
+                        if (invert) { yData *= -1; }
                         return "translate(" + x(xData) + "," + y(yData) + ")";
                     })
                     .attr("x", -6)

@@ -41,10 +41,10 @@
     <tr ng-repeat="(index, account) in accounts track by $index" class="{{account.accountType + 'Row'}}">
       <td>{{account.title}}</td>
       <td>{{account.balance}}</td>
-      <td>{{account.apr | percentage}}</td>
+      <td><input type="range" min="0" max=".5" step=".0005" ng-model="account.apr"/>{{account.apr | percentage}}</td>
       <td>{{account.compoundPeriod}} days</td>
       <td>
-        <labeled-slider label="" min ="0" step ="1" ng-model="account.transferAmount"></labeled-slider>
+        <labeled-slider label="" min ="0" max ="3000" step ="1" ng-model="account.transferAmount"></labeled-slider>
       </td>
       <td class="delete-cell"><a ng-click="removeAccount(index)">X</a></td>
     </tr>
