@@ -4,7 +4,7 @@ body {
 }
 
 #graph {
-  height: 300px;
+  height: 500px;
 }
 
 .axis path, .axis line {
@@ -25,4 +25,8 @@ body {
 }
 .loanRow {
   background-color: #fdd;
+}
+
+input[type='range'] {
+  width: 300px;
 }
