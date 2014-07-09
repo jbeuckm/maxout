@@ -43,11 +43,18 @@ angular.module('maxout').directive('projectionGraph', [function () {
 
                 xAxis = d3.svg.axis()
                     .scale(x)
-                    .orient("bottom");
+                    .orient("bottom")
+                    .tickFormat(function(d){
+                    console.log(d);
+                        var date = new Date(d*1000);
+                        console.log(date);
+                        return d3.time.format("%b/%Y")(date);
+                    });
 
                 yAxis = d3.svg.axis()
                     .scale(y)
-                    .orient("left");
+                    .orient("left")
+                    .tickFormat(d3.format("$,"));
 
                 area = d3.svg.area()
                     .x(function(d) { return x(d.date); })
@@ -129,7 +136,7 @@ angular.module('maxout').directive('projectionGraph', [function () {
                 }
                 y.domain([-min, max]);
                 svg.select(".y.axis")
-                    .transition()  // https://github.com/mbostock/d3/wiki/Transitions#wiki-d3_ease
+                    .transition()
                     .call(yAxis);
 
                 if (loanSeries) {
