@@ -124,9 +124,9 @@ BalanceCalculator.prototype.calculateAverageBalance = function(values) {
  * @param balance
  */
 BalanceCalculator.prototype.recordBalance = function(balances, date, balance) {
-    console.log('recordBalance:');
-    console.log(date);
-    console.log(date.format('X'));
+//    console.log('recordBalance:');
+//    console.log(date);
+//    console.log(date.format('X'));
     var data = {
         date: date.format('X'),
         balance: balance,

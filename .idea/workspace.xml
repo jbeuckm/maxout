@@ -70,7 +70,7 @@
       <file leaf-file-name="ProjectionGraph.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/directives/ProjectionGraph.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="43" selection-start="1875" selection-end="1875" vertical-scroll-proportion="0.6489227">
+            <state line="28" column="56" selection-start="1108" selection-end="1108" vertical-scroll-proportion="-2.0012674">
               <folding />
             </state>
           </provider>
@@ -88,7 +88,7 @@
       <file leaf-file-name="BalanceCalculator.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/workers/BalanceCalculator.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="128" column="32" selection-start="3777" selection-end="3777" vertical-scroll-proportion="0.0">
+            <state line="126" column="2" selection-start="3689" selection-end="3689" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -578,14 +578,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/workers/BalanceCalculator.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="128" column="32" selection-start="3777" selection-end="3777" vertical-scroll-proportion="0.0">
+        <state line="126" column="2" selection-start="3689" selection-end="3689" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/directives/ProjectionGraph.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="43" selection-start="1875" selection-end="1875" vertical-scroll-proportion="0.6489227">
+        <state line="28" column="56" selection-start="1108" selection-end="1108" vertical-scroll-proportion="-2.0012674">
           <folding />
         </state>
       </provider>

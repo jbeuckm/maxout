@@ -15,12 +15,20 @@ angular.module('maxout').directive('projectionGraph', [function () {
                 svg, xAxisGroup, yAxisGroup, loanSeries, investmentSeries;
 
 
-            scope.$watch('accounts', function(e){
-                console.log('accounts changed '+JSON.stringify(e));
+            scope.$watch('accounts', function(newVal, oldVal){
                 if (scope.accounts) {
-                    calculateBalances(scope.accounts);
+
+                    for (var i= 0, l=scope.accounts.length; i<l; i++) {
+                        var account = scope.accounts[i];
+                        (function(index){
+                            scope.$watch('accounts['+index+']', function(newVal, oldVal) {
+                                console.log(index+" changed");
+                            }, true);
+                        })(i);
+                    }
+//                    calculateBalances(scope.accounts);
                 }
-            }, true);
+            });
 
             setup();
 
@@ -45,9 +53,7 @@ angular.module('maxout').directive('projectionGraph', [function () {
                     .scale(x)
                     .orient("bottom")
                     .tickFormat(function(d){
-                    console.log(d);
                         var date = new Date(d*1000);
-                        console.log(date);
                         return d3.time.format("%b/%Y")(date);
                     });
 
