@@ -23,10 +23,11 @@ angular.module('maxout').directive('projectionGraph', [function () {
                         (function(index){
                             scope.$watch('accounts['+index+']', function(newVal, oldVal) {
                                 console.log(index+" changed");
+                                //TODO: only recalculate changed account
+                                calculateBalances(scope.accounts);
                             }, true);
                         })(i);
                     }
-//                    calculateBalances(scope.accounts);
                 }
             });
 
