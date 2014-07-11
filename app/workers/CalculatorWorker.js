@@ -7,32 +7,26 @@ importScripts('BalanceCalculator.js');
  */
 self.addEventListener('message', function(e) {
 
-    calculateBalances(e.data);
+    calculateBalance(e.data);
 
 }, false);
 
-function calculateBalances(accounts) {
+function calculateBalance(account) {
 
-    var calculators = {};
-    var data = [];
-    for (var i= 0, l=accounts.length; i<l; i++) {
-        var account = accounts[i];
-        calculators[account.title] = new BalanceCalculator(account);
+    var calculator = new BalanceCalculator(account);
 
-        var datum = {
-            name: account.title,
-            accountType: account.accountType,
-            values: calculators[account.title].calculateBalancesUntil(moment().add('years', 15))
-        };
+    var values = calculator.calculateBalancesUntil(moment().add('years', 15));
 
-        var firstDate = datum.values[0].date;
-        var lastDate = datum.values[datum.values.length-1].date;
-        datum.dateRange = [firstDate, lastDate];
+    var firstDate = values[0].date;
+    var lastDate = values[values.length-1].date;
 
-        data.push(datum);
-    }
-
-    self.postMessage(data);
+    self.postMessage({
+        account: account,
+        name: account.title,
+        accountType: account.accountType,
+        values: values,
+        dateRange: [firstDate, lastDate]
+    });
 }
 
 

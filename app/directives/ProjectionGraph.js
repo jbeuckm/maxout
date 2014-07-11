@@ -12,7 +12,7 @@ angular.module('maxout').directive('projectionGraph', [function () {
 
             var margin, width, height, parseDate, formatPercent,
                 x, y, color, xAxis, yAxis, area, invertedArea, stack,
-                svg, xAxisGroup, yAxisGroup, loanSeries, investmentSeries;
+                svg, xAxisGroup, yAxisGroup, loanSeries, investmentSeries, calculatedBalances;
 
 
             scope.$watch('accounts', function(newVal, oldVal){
@@ -24,7 +24,7 @@ angular.module('maxout').directive('projectionGraph', [function () {
                             scope.$watch('accounts['+index+']', function(newVal, oldVal) {
                                 console.log(index+" changed");
                                 //TODO: only recalculate changed account
-                                calculateBalances(scope.accounts);
+                                calculateBalances(scope.accounts[index]);
                             }, true);
                         })(i);
                     }
@@ -95,28 +95,36 @@ angular.module('maxout').directive('projectionGraph', [function () {
             }
 
 
-            function drawData(data) {
+            function drawData(accounts) {
 
-                if (!data) return;
+                if (!accounts) return;
 
-                var accountNames = data.map(function(d){ return d.name; });
+                var accountNames = [];
+                for (var i in accounts) {
+                    var d = accounts[i];
+                    accountNames.push(d.name);
+                }
 
                 color.domain(accountNames);
 
-                var accounts = data;
 
+                var dateRanges = [];//data.map(function(d){ return d.dateRange[0]; });
+                for (var i in accounts) {
+                    var d = accounts[i];
+                    dateRanges.push(d.dateRange[0]);
+                    dateRanges.push(d.dateRange[1]);
+                }
 
-                var dateRanges = data.map(function(d){ return d.dateRange[0]; });
-                dateRanges = dateRanges.concat(data.map(function(d){ return d.dateRange[1]; }));
                 console.log(d3.extent(dateRanges));
                 x.domain(d3.extent(dateRanges));
                 svg.select(".x.axis")
-                    .transition()  // https://github.com/mbostock/d3/wiki/Transitions#wiki-d3_ease
+                    .transition()
                     .call(xAxis);
 
                 var investments = [], loans = [];
-                for (var i= 0, l=accounts.length; i<l; i++) {
+                for (var i in accounts) {
                     var account = accounts[i];
+                    console.log('sorting acct '+i);
 
                     switch (account.accountType) {
                         case 'investment':
@@ -183,11 +191,21 @@ angular.module('maxout').directive('projectionGraph', [function () {
             }
 
             scope.calculatorWorker = new Worker('app/workers/CalculatorWorker.js?v=' + Math.random());
-            function calculateBalances(accounts) {
-                scope.calculatorWorker.postMessage(accounts);
+            calculatedBalances = {};
+            function calculateBalances(account) {
+                scope.calculatorWorker.postMessage(account);
             }
             function handleWorkerMessage(e) {
-                drawData(e.data);
+                var result = e.data;
+                calculatedBalances[result.account.id] = result;
+
+                var accountIds = [];
+                for (var i in calculatedBalances) {
+                    accountIds.push(i);
+                }
+                console.log(accountIds);
+
+                drawData(calculatedBalances);
             }
             scope.calculatorWorker.addEventListener('message', handleWorkerMessage, false);
 
