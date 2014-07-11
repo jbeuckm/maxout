@@ -16,6 +16,8 @@ function BalanceCalculator(account) {
 
     this.transferAmount = parseFloat(account.transferAmount);
     this.transferPeriod = parseFloat(account.transferPeriod);
+
+    this.lastRecordedDate = null;
 }
 
 /**
@@ -124,16 +126,19 @@ BalanceCalculator.prototype.calculateAverageBalance = function(values) {
  * @param balance
  */
 BalanceCalculator.prototype.recordBalance = function(balances, date, balance) {
-//    console.log('recordBalance:');
-//    console.log(date);
-//    console.log(date.format('X'));
-    var data = {
-        date: date.format('X'),
-        balance: balance,
-        y: balance
-    };
 
-    balances.push(data);
+    if (date == this.lastRecordedDate) {
+        balances[balances.length - 1].balance = balance;
+    } else {
+        var data = {
+            date: date.format('X'),
+            balance: balance,
+            y: balance
+        };
+
+        balances.push(data);
+        this.lastRecordedDate = date;
+    }
 };
 
 /**
