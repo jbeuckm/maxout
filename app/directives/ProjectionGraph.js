@@ -19,22 +19,22 @@ angular.module('maxout').directive('projectionGraph', [function () {
                 var newCount = newVal.length;
                 if (oldCount != newCount) {
                     calculatedBalances = {};
-                    for (var i= 0, l=newVal.length; i<l; i++) {
+                    for (var i= 0, l=newCount; i<l; i++) {
                         calculateBalances(newVal[i]);
                     }
                 }
             }, true);
 
             scope.$watch('accounts', function(newVal, oldVal){
-                if (scope.accounts) {
+                if (newVal) {
 
-                    for (var i= 0, l=scope.accounts.length; i<l; i++) {
-                        var account = scope.accounts[i];
+                    for (var i= 0, l=newVal.length; i<l; i++) {
+                        var account = newVal[i];
                         (function(index){
-                            scope.$watch('accounts['+index+']', function(newVal, oldVal) {
+                            scope.$watch('accounts['+index+']', function(nv2, ov2) {
                                 console.log(index+" changed");
                                 //TODO: only recalculate changed account
-                                calculateBalances(scope.accounts[index]);
+                                calculateBalances(newVal[index]);
                             }, true);
                         })(i);
                     }
@@ -134,7 +134,6 @@ angular.module('maxout').directive('projectionGraph', [function () {
                 var investments = [], loans = [];
                 for (var i in accounts) {
                     var account = accounts[i];
-                    console.log('sorting acct '+i);
 
                     switch (account.accountType) {
                         case 'investment':
@@ -213,7 +212,6 @@ angular.module('maxout').directive('projectionGraph', [function () {
                 for (var i in calculatedBalances) {
                     accountIds.push(i);
                 }
-                console.log(accountIds);
 
                 drawData(calculatedBalances);
             }

@@ -70,7 +70,7 @@
       <file leaf-file-name="ProjectionGraph.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/directives/ProjectionGraph.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="38" selection-start="700" selection-end="700" vertical-scroll-proportion="0.36501902">
+            <state line="136" column="0" selection-start="4821" selection-end="4821" vertical-scroll-proportion="0.31051964">
               <folding />
             </state>
           </provider>
@@ -564,9 +564,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/workers/CalculatorWorker.js">
+    <entry file="file://$PROJECT_DIR$/app/controllers/MainController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="26" selection-start="485" selection-end="485" vertical-scroll-proportion="0.0">
+        <state line="30" column="0" selection-start="1037" selection-end="1037" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -578,16 +578,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/MainController.js">
+    <entry file="file://$PROJECT_DIR$/app/workers/CalculatorWorker.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="1037" selection-end="1037" vertical-scroll-proportion="0.0">
+        <state line="20" column="26" selection-start="485" selection-end="485" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/directives/ProjectionGraph.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="38" selection-start="700" selection-end="700" vertical-scroll-proportion="0.36501902">
+        <state line="136" column="0" selection-start="4821" selection-end="4821" vertical-scroll-proportion="0.31051964">
           <folding />
         </state>
       </provider>
