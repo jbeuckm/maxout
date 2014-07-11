@@ -14,6 +14,16 @@ angular.module('maxout').directive('projectionGraph', [function () {
                 x, y, color, xAxis, yAxis, area, invertedArea, stack,
                 svg, xAxisGroup, yAxisGroup, loanSeries, investmentSeries, calculatedBalances;
 
+            scope.$watch('accounts', function(newVal, oldVal){
+                var oldCount = oldVal.length;
+                var newCount = newVal.length;
+                if (oldCount != newCount) {
+                    calculatedBalances = {};
+                    for (var i= 0, l=newVal.length; i<l; i++) {
+                        calculateBalances(newVal[i]);
+                    }
+                }
+            }, true);
 
             scope.$watch('accounts', function(newVal, oldVal){
                 if (scope.accounts) {
