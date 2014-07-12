@@ -36,7 +36,7 @@ angular.module('maxout').controller('MainController', ['$scope', 'PortfolioServi
     }, true);
 
     $scope.removeAccount = function(index) {
-        $scope.accounts.splice(index, 1);
+        return $scope.accounts.splice(index, 1);
     };
 
 }]);

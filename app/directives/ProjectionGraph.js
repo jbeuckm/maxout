@@ -12,28 +12,35 @@ angular.module('maxout').directive('projectionGraph', [function () {
 
             var margin, width, height, parseDate, formatPercent,
                 x, y, color, xAxis, yAxis, area, invertedArea, stack,
-                svg, xAxisGroup, yAxisGroup, loanSeries, investmentSeries, calculatedBalances;
+                svg, xAxisGroup, yAxisGroup, loanSeries, investmentSeries, calculatedBalances = {};
 
             scope.$watch('accounts', function(newVal, oldVal){
                 var oldCount = oldVal.length;
                 var newCount = newVal.length;
-                if (oldCount != newCount) {
-                    calculatedBalances = {};
+                if (oldCount < newCount) {
+                    for (var i= oldCount, l=newCount; i<l; i++) {
+                        calculateBalances(newVal[i]);
+                    }
+                }
+                else if (oldCount > newCount) {
                     for (var i= 0, l=newCount; i<l; i++) {
+                        calculatedBalances = {};
                         calculateBalances(newVal[i]);
                     }
                 }
             }, true);
 
+            scope.$watch(scope.removeAccount, function(newVal, oldVal){
+console.log("remove heard");
+            });
+
             scope.$watch('accounts', function(newVal, oldVal){
                 if (newVal) {
 
                     for (var i= 0, l=newVal.length; i<l; i++) {
-                        var account = newVal[i];
                         (function(index){
                             scope.$watch('accounts['+index+']', function(nv2, ov2) {
                                 console.log(index+" changed");
-                                //TODO: only recalculate changed account
                                 calculateBalances(newVal[index]);
                             }, true);
                         })(i);

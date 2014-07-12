@@ -8,7 +8,6 @@ function BalanceCalculator(account) {
 
     this.title = account.title;
     this.accountType = account.accountType;
-    this.complete = false;
 
     this.balance = parseFloat(account.balance);
     this.apr = parseFloat(account.apr);
@@ -18,6 +17,7 @@ function BalanceCalculator(account) {
     this.transferPeriod = parseFloat(account.transferPeriod);
 
     this.lastRecordedDate = null;
+    this.complete = false;
 }
 
 /**
