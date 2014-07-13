@@ -1,4 +1,4 @@
-angular.module('maxout').factory('PortfolioService', function($http) {
+angular.module('maxout').factory('portfolioService', function($http) {
 
     return {
         loadPortfolio: function() {

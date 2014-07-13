@@ -1,5 +1,5 @@
 
-angular.module('maxout').controller('MainController', ['$scope', 'PortfolioService', function($scope, PortfolioService){
+angular.module('maxout').controller('MainController', ['$scope', 'portfolioService', 'listService', function($scope, PortfolioService){
 
     $scope.accounts = PortfolioService.loadPortfolio() || [];
 

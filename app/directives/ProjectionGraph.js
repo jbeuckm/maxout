@@ -1,4 +1,4 @@
-angular.module('maxout').directive('projectionGraph', [function () {
+angular.module('maxout').directive('projectionGraph', ['listService', function () {
 
     return {
         restrict: 'E',
@@ -23,8 +23,8 @@ angular.module('maxout').directive('projectionGraph', [function () {
                     }
                 }
                 else if (oldCount > newCount) {
+                    calculatedBalances = {};
                     for (var i= 0, l=newCount; i<l; i++) {
-                        calculatedBalances = {};
                         calculateBalances(newVal[i]);
                     }
                 }
