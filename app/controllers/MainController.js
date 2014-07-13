@@ -1,7 +1,11 @@
 
-angular.module('maxout').controller('MainController', ['$scope', 'portfolioService', 'listService', function($scope, PortfolioService){
+angular.module('maxout').controller('MainController', ['$scope', 'portfolioService', function($scope, portfolioService){
 
-    $scope.accounts = PortfolioService.loadPortfolio() || [];
+    $scope.account = portfolioService.accounts;
+    $scope.added = portfolioService.added;
+    $scope.removed = portfolioService.removed;
+
+    portfolioService.load();
 
     $scope.compoundPeriod = 30;
     $scope.transferPeriod = 30;
@@ -18,7 +22,7 @@ angular.module('maxout').controller('MainController', ['$scope', 'portfolioServi
     };
 
     $scope.addAccount = function(){
-        $scope.accounts.push({
+        var account = {
             id: $scope.guid(),
             accountType: $scope.accountType,
             title: $scope.titleText,
@@ -27,16 +31,13 @@ angular.module('maxout').controller('MainController', ['$scope', 'portfolioServi
             compoundPeriod: parseFloat($scope.compoundPeriod),
             transferPeriod: parseFloat($scope.transferPeriod),
             transferAmount: parseFloat($scope.transferAmount)
-        });
+        };
+
+        portfolioService.addItem(account);
     };
 
-    // save after any and every change in the accounts array
-    $scope.$watch('accounts', function(){
-        PortfolioService.savePortfolio($scope.accounts);
-    }, true);
-
     $scope.removeAccount = function(index) {
-        return $scope.accounts.splice(index, 1);
+        portoflioService.removeItem(index);
     };
 
 }]);

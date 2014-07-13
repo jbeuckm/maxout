@@ -1,4 +1,4 @@
-angular.module('maxout').directive('projectionGraph', ['listService', function () {
+angular.module('maxout').directive('projectionGraph', [function () {
 
     return {
         restrict: 'E',
@@ -13,7 +13,7 @@ angular.module('maxout').directive('projectionGraph', ['listService', function (
             var margin, width, height, parseDate, formatPercent,
                 x, y, color, xAxis, yAxis, area, invertedArea, stack,
                 svg, xAxisGroup, yAxisGroup, loanSeries, investmentSeries, calculatedBalances = {};
-
+/*
             scope.$watch('accounts', function(newVal, oldVal){
                 var oldCount = oldVal.length;
                 var newCount = newVal.length;
@@ -47,7 +47,7 @@ console.log("remove heard");
                     }
                 }
             });
-
+*/
             setup();
 
 
