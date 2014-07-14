@@ -29,7 +29,7 @@ angular.module('maxout').directive('projectionGraph', [function () {
                 })(i);
             }
 
-            scope.$watch('portfolioService.addedAccounts', function(newVal, oldVal){
+            scope.$watch('addedAccounts', function(newVal, oldVal){
                 console.log(newVal);
                 console.log("addedAccounts watch");
                 if (!scope.addedAccounts) return;
@@ -38,7 +38,7 @@ angular.module('maxout').directive('projectionGraph', [function () {
                 calculateBalances(account);
             }, true);
 
-            scope.$watch('portfolioService.removedAccounts', function(newVal, oldVal){
+            scope.$watch('removedAccounts', function(newVal, oldVal){
                 console.log(newVal);
                 console.log("removedAccounts watch");
                 if (!scope.removedAccounts) return;
@@ -134,7 +134,6 @@ angular.module('maxout').directive('projectionGraph', [function () {
                     dateRanges.push(d.dateRange[1]);
                 }
 
-                console.log(d3.extent(dateRanges));
                 x.domain(d3.extent(dateRanges));
                 svg.select(".x.axis")
                     .transition()
