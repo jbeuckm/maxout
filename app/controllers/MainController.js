@@ -1,9 +1,9 @@
 
 angular.module('maxout').controller('MainController', ['$scope', 'portfolioService', function($scope, portfolioService){
 
-    $scope.account = portfolioService.accounts;
-    $scope.added = portfolioService.added;
-    $scope.removed = portfolioService.removed;
+    $scope.accounts = portfolioService.accounts;
+    $scope.addedAccounts = portfolioService.added;
+    $scope.removedAccounts = portfolioService.removed;
 
     portfolioService.load();
 
@@ -37,7 +37,7 @@ angular.module('maxout').controller('MainController', ['$scope', 'portfolioServi
     };
 
     $scope.removeAccount = function(index) {
-        portoflioService.removeItem(index);
+        portfolioService.removeItem(index);
     };
 
 }]);

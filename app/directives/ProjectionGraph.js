@@ -13,6 +13,29 @@ angular.module('maxout').directive('projectionGraph', [function () {
             var margin, width, height, parseDate, formatPercent,
                 x, y, color, xAxis, yAxis, area, invertedArea, stack,
                 svg, xAxisGroup, yAxisGroup, loanSeries, investmentSeries, calculatedBalances = {};
+
+            scope.calculatorWorker = new Worker('app/workers/CalculatorWorker.js?v=' + Math.random());
+            calculatedBalances = {};
+
+            var accounts = scope.accounts;
+            for (var i= 0, l=accounts.length; i<l; i++) {
+                var account = accounts[i];
+                calculateBalances(account);
+                (function(index){
+                    scope.$watch('accounts['+index+']', function(newVal){
+                        calculateBalances(newVal);
+                    }, true);
+                })(i);
+            }
+
+            scope.$watch('addedAccounts', function(newVal, oldVal){
+                console.log(newVal);
+                if (!scope.addedAccounts) return;
+                var account = newVal[newVal.length-1];
+
+                calculateBalances(account);
+            });
+
 /*
             scope.$watch('accounts', function(newVal, oldVal){
                 var oldCount = oldVal.length;
@@ -206,8 +229,6 @@ console.log("remove heard");
                 return account;
             }
 
-            scope.calculatorWorker = new Worker('app/workers/CalculatorWorker.js?v=' + Math.random());
-            calculatedBalances = {};
             function calculateBalances(account) {
                 scope.calculatorWorker.postMessage(account);
             }

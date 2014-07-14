@@ -7,14 +7,17 @@ angular.module('maxout').factory('portfolioService', function($http) {
     function addItem(item) {
         added.push(item);
         data.push(item);
+        savePortfolio();
     }
 
-    function removeItem(item) {
-        var index = items.indexOf(item);
+    function removeItem(index) {
+//        var index = items.indexOf(item);
+        var item = data[index];
         if (index >= 0) {
             removed.push(item);
             data.splice(index, 1);
         }
+        savePortfolio();
     }
 
     function loadPortfolio() {
