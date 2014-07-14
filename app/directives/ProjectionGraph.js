@@ -22,55 +22,34 @@ angular.module('maxout').directive('projectionGraph', [function () {
                 var account = accounts[i];
                 calculateBalances(account);
                 (function(index){
+                    console.log("individual watch from init");
                     scope.$watch('accounts['+index+']', function(newVal){
                         calculateBalances(newVal);
                     }, true);
                 })(i);
             }
 
-            scope.$watch('addedAccounts', function(newVal, oldVal){
+            scope.$watch('portfolioService.addedAccounts', function(newVal, oldVal){
                 console.log(newVal);
+                console.log("addedAccounts watch");
                 if (!scope.addedAccounts) return;
                 var account = newVal[newVal.length-1];
 
                 calculateBalances(account);
-            });
-
-/*
-            scope.$watch('accounts', function(newVal, oldVal){
-                var oldCount = oldVal.length;
-                var newCount = newVal.length;
-                if (oldCount < newCount) {
-                    for (var i= oldCount, l=newCount; i<l; i++) {
-                        calculateBalances(newVal[i]);
-                    }
-                }
-                else if (oldCount > newCount) {
-                    calculatedBalances = {};
-                    for (var i= 0, l=newCount; i<l; i++) {
-                        calculateBalances(newVal[i]);
-                    }
-                }
             }, true);
 
-            scope.$watch(scope.removeAccount, function(newVal, oldVal){
-console.log("remove heard");
-            });
+            scope.$watch('portfolioService.removedAccounts', function(newVal, oldVal){
+                console.log(newVal);
+                console.log("removedAccounts watch");
+                if (!scope.removedAccounts) return;
+                var account = newVal[newVal.length-1];
+                delete calculatedBalances[account.id];
 
-            scope.$watch('accounts', function(newVal, oldVal){
-                if (newVal) {
+                drawData(calculatedBalances);
+            }, true);
 
-                    for (var i= 0, l=newVal.length; i<l; i++) {
-                        (function(index){
-                            scope.$watch('accounts['+index+']', function(nv2, ov2) {
-                                console.log(index+" changed");
-                                calculateBalances(newVal[index]);
-                            }, true);
-                        })(i);
-                    }
-                }
-            });
-*/
+
+
             setup();
 
 

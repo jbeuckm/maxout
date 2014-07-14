@@ -4,10 +4,12 @@ angular.module('maxout').factory('portfolioService', function($http) {
     var added = [];
     var removed = [];
 
-    function addItem(item) {
+    function addItem(item, skipSave) {
         added.push(item);
         data.push(item);
-        savePortfolio();
+        if (!skipSave) {
+            savePortfolio();
+        }
     }
 
     function removeItem(index) {
@@ -23,7 +25,7 @@ angular.module('maxout').factory('portfolioService', function($http) {
     function loadPortfolio() {
         var accounts = JSON.parse(localStorage.getItem('accounts'));
         for (var i= 0, l=accounts.length; i<l; i++) {
-            addItem(accounts[i]);
+            addItem(accounts[i], true);
         }
     }
     function savePortfolio() {

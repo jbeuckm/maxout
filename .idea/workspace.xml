@@ -40,19 +40,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PortfolioService.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="PortfolioService.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/services/PortfolioService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="0" selection-start="239" selection-end="239" vertical-scroll-proportion="0.19631901">
+            <state line="27" column="37" selection-start="729" selection-end="729" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProjectionGraph.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ProjectionGraph.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/directives/ProjectionGraph.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="252" column="0" selection-start="9091" selection-end="9092" vertical-scroll-proportion="0.0">
+            <state line="31" column="46" selection-start="1223" selection-end="1223" vertical-scroll-proportion="0.49079755">
               <folding />
             </state>
           </provider>
@@ -91,8 +91,8 @@
         <option value="$PROJECT_DIR$/app/services/ListService.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/app/controllers/MainController.js" />
-        <option value="$PROJECT_DIR$/app/directives/ProjectionGraph.js" />
         <option value="$PROJECT_DIR$/app/services/PortfolioService.js" />
+        <option value="$PROJECT_DIR$/app/directives/ProjectionGraph.js" />
       </list>
     </option>
   </component>
@@ -539,23 +539,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/workers/BalanceCalculator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="550" selection-end="550" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="0" selection-start="601" selection-end="601" vertical-scroll-proportion="1.28">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/directives/ProjectionGraph.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="252" column="0" selection-start="9091" selection-end="9092" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -567,9 +553,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/workers/BalanceCalculator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="550" selection-end="550" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/services/PortfolioService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="239" selection-end="239" vertical-scroll-proportion="0.19631901">
+        <state line="27" column="37" selection-start="729" selection-end="729" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/directives/ProjectionGraph.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="46" selection-start="1223" selection-end="1223" vertical-scroll-proportion="0.49079755">
           <folding />
         </state>
       </provider>
