@@ -1,4 +1,4 @@
-angular.module('maxout').factory('portfolioService', function($http) {
+angular.module('maxout').factory('portfolioService', function() {
 
     var data = [];
     var added = [];

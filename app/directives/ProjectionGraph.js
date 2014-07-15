@@ -18,6 +18,8 @@ angular.module('maxout').directive('projectionGraph', [function () {
             calculatedBalances = {};
 
             var accounts = scope.accounts;
+            var savePortfolio = scope.savePortfolio;
+console.log(scope);
             for (var i= 0, l=accounts.length; i<l; i++) {
                 var account = accounts[i];
                 calculateBalances(account);
@@ -25,20 +27,22 @@ angular.module('maxout').directive('projectionGraph', [function () {
                     console.log("individual watch from init");
                     scope.$watch('accounts['+index+']', function(newVal){
                         calculateBalances(newVal);
+                        savePortfolio();
                     }, true);
                 })(i);
             }
 
-            scope.$watch('addedAccounts', function(newVal, oldVal){
+
+            scope.$watchCollection('addedAccounts', function(newVal){
                 console.log(newVal);
                 console.log("addedAccounts watch");
                 if (!scope.addedAccounts) return;
                 var account = newVal[newVal.length-1];
 
                 calculateBalances(account);
-            }, true);
+            });
 
-            scope.$watch('removedAccounts', function(newVal, oldVal){
+            scope.$watchCollection('removedAccounts', function(newVal){
                 console.log(newVal);
                 console.log("removedAccounts watch");
                 if (!scope.removedAccounts) return;
@@ -46,8 +50,7 @@ angular.module('maxout').directive('projectionGraph', [function () {
                 delete calculatedBalances[account.id];
 
                 drawData(calculatedBalances);
-            }, true);
-
+            });
 
 
             setup();
@@ -208,6 +211,7 @@ angular.module('maxout').directive('projectionGraph', [function () {
             }
 
             function calculateBalances(account) {
+                if (account)
                 scope.calculatorWorker.postMessage(account);
             }
             function handleWorkerMessage(e) {
