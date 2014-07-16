@@ -2,10 +2,7 @@ angular.module('maxout').directive('projectionGraph', [function () {
 
     return {
         restrict: 'E',
-//        require: "^ngModel",
-//        scope: {
-//            accounts: "=ngModel"
-//        },
+
         replace: 'true',
         template: '<svg id="graph"></svg>',
         link: function (scope, element, attributes) {
@@ -19,7 +16,7 @@ angular.module('maxout').directive('projectionGraph', [function () {
 
             var accounts = scope.accounts;
             var savePortfolio = scope.savePortfolio;
-console.log(scope);
+
             for (var i= 0, l=accounts.length; i<l; i++) {
                 var account = accounts[i];
                 calculateBalances(account);
@@ -38,7 +35,7 @@ console.log(scope);
                 console.log("addedAccounts watch");
                 if (!scope.addedAccounts) return;
                 var account = newVal[newVal.length-1];
-
+                if (!account) return;
                 calculateBalances(account);
             });
 
@@ -227,7 +224,6 @@ console.log(scope);
                 drawData(calculatedBalances);
             }
             scope.calculatorWorker.addEventListener('message', handleWorkerMessage, false);
-
 
         }
     };
