@@ -3,9 +3,9 @@ angular.module('maxout').directive('projectionGraph', [function () {
     return {
         restrict: 'E',
 //        require: "^ngModel",
-        scope: {
-            accounts: "=ngModel"
-        },
+//        scope: {
+//            accounts: "=ngModel"
+//        },
         replace: 'true',
         template: '<svg id="graph"></svg>',
         link: function (scope, element, attributes) {
@@ -47,6 +47,7 @@ console.log(scope);
                 console.log("removedAccounts watch");
                 if (!scope.removedAccounts) return;
                 var account = newVal[newVal.length-1];
+                if (!account) return;
                 delete calculatedBalances[account.id];
 
                 drawData(calculatedBalances);
