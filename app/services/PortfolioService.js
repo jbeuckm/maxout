@@ -24,6 +24,9 @@ angular.module('maxout').factory('portfolioService', function() {
 
     function loadPortfolio() {
         var accounts = JSON.parse(localStorage.getItem('accounts'));
+        if (!accounts) {
+            accounts = [];
+        }
         for (var i= 0, l=accounts.length; i<l; i++) {
             addItem(accounts[i], true);
         }

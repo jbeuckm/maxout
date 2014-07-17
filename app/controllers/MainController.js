@@ -7,7 +7,6 @@ angular.module('maxout').controller('MainController', ['$scope', 'portfolioServi
     $scope.addedAccounts = portfolioService.added;
     $scope.removedAccounts = portfolioService.removed;
     $scope.savePortfolio = portfolioService.save;
-//console.log(portfolioService);
 
     $scope.compoundPeriod = 30;
     $scope.transferPeriod = 30;
