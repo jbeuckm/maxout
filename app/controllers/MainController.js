@@ -23,6 +23,11 @@ angular.module('maxout').controller('MainController', ['$scope', 'portfolioServi
     };
 
     $scope.addAccount = function(){
+
+        if (!$scope.accountType) {
+            alert("Please select an account type.");
+            return;
+        }
         var account = {
             id: $scope.guid(),
             accountType: $scope.accountType,
@@ -35,7 +40,15 @@ angular.module('maxout').controller('MainController', ['$scope', 'portfolioServi
         };
 
         portfolioService.addItem(account);
+
+        clearFields();
     };
+
+    function clearFields() {
+        $scope.titleText = null;
+        $scope.balanceText = null;
+        $scope.transferAmount = null;
+    }
 
     $scope.removeAccount = function(index) {
         portfolioService.removeItem(index);

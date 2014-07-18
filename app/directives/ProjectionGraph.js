@@ -37,6 +37,10 @@ angular.module('maxout').directive('projectionGraph', [function () {
                 var account = newVal[newVal.length-1];
                 if (!account) return;
                 calculateBalances(account);
+                scope.$watch('accounts['+(newVal.length-1)+']', function(updatedAccount){
+                    calculateBalances(updatedAccount);
+                    savePortfolio();
+                }, true);
             });
 
             scope.$watchCollection('removedAccounts', function(newVal){
